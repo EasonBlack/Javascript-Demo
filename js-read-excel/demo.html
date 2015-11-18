@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+ <input type="file" value="File" id="file1">
+ <button id="btnRead">Read</button>
+</body>
+<script src="../vendor/jquery-1.11.1.js"></script>
+<script src="../vendor/xlsx.core.min.js"></script>
+<script>
+
+    $('#btnRead').on('click',function(){
+        var f = $('#file1')[0].files[0];
+        var reader = new FileReader();
+        reader.readAsBinaryString(f);
+        reader.onload = function(e) {
+            var data = e.target.result;
+            var workbook = XLSX.read(data, {type: 'binary'});
+            console.log(to_json(workbook));
+        }
+    });
+
+    function to_json(workbook) {
+        var result = {};
+        workbook.SheetNames.forEach(function(sheetName) {
+            var roa = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
+            if(roa.length > 0){
+                result[sheetName] = roa;
+            }
+        });
+        return result;
+    }
+
+</script>
+</html>
