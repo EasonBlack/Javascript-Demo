@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body,html {
+            margin:0px;
+            padding:0px;
+        }
+        .card-container {
+            margin: 20px;
+            position: relative;
+            width: 175px;
+            height: 65px;
+        }
+        .leftpart {
+            background-color: #00B7FF;
+            height: 65px;
+            width: 160px;
+            text-align: center;
+            border-bottom-right-radius: 64px 77px;
+            z-index: 15;
+            float: left;
+            left: 0px;
+            position: relative;
+        }
+        .pic-content {
+            display: block;
+            z-index: 0;
+            right: 0px;
+            width: 65px;
+            height: 65px;
+            position: absolute;
+        }
+
+        .pic-line {
+            height: 2px;
+            width: 100%;
+            display: block;
+        }
+
+        .bottompart {
+            background-color: steelblue;
+            color: white;
+            line-height: 30px;
+            width: 100%;
+            box-sizing: border-box;
+            padding-left:10px;
+        }
+    </style>
+</head>
+<body>
+<div class="card-container">
+    <div class="leftpart">
+    </div>
+    <img class='pic-content' src="card-pic.png">
+    <img class='pic-line'  src="card-line.png">
+    <div class="bottompart">
+        This is a card
+    </div>
+</div>
+
+</body>
+</html>
