@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../style/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="../style/bootstrap-theme.css" type="text/css" rel="stylesheet">
+    <link href="demo.style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="delete-container">
+        <div class="delete-start d1-start"></div>
+        <div class="delete-end d1-end"></div>
+    </div>
+
+    <div class="delete-container">
+        <div class="delete-start d2-start"></div>
+        <div class="delete-end d2-end"></div>
+    </div>
+
+    <div class="delete-container">
+        <div class="delete-start d3-start"></div>
+        <div class="delete-end d3-end"></div>
+    </div>
+</div>
+</body>
+<script src="../vendor/jquery-1.11.1.js"></script>
+<script>
+
+    $('.d1-end').on('mousedown',function(){
+        $('.d1-start').css('left','186px');
+    });
+
+    var isD2Deleteing = false;
+    var d2TimeStamp;
+    $('.d2-end').on('mousedown',function(){
+        isD2Deleteing = true;
+        var $d2 = $('.d2-start');
+        var currentPos = 20 ;
+        d2TimeStamp = setInterval(function(){
+            if(!isD2Deleteing)  {
+                clearInterval(d2TimeStamp);
+                $('.d2-start').css('left' , '0px');
+                return false;
+            }
+            if(currentPos >= 186){
+                currentPos =  186;
+                clearInterval(d2TimeStamp);
+            }
+            $('.d2-start').css('left' , currentPos + 'px');
+            currentPos = currentPos + 20;
+            console.log(currentPos);
+        },100);
+    });
+    $('.d2-end').on('mouseup',function(){
+        isD2Deleteing = false;
+    });
+
+    var isD3Deleteing = false;
+    var d3TimeStamp;
+    var currentPos = 0;
+    var incrementer = .01;
+    $('.d3-end').on('mousedown',function(){
+        isD3Deleteing = true;
+        d3TimeStamp = setInterval(function(){
+            if(!isD3Deleteing)  {
+                clearInterval(d3TimeStamp);
+                $('.d3-start').css('left' , '0px');
+                return false;
+            }
+            incrementer += .0035;
+            currentPos += (1 / incrementer);
+
+            if(currentPos >= 186){
+                currentPos =  186;
+                incrementer = .01;
+                clearInterval(d3TimeStamp);
+            }
+
+            $('.d3-start').css('left' , currentPos + 'px');
+            if(currentPos == 186) currentPos =0 ;
+            console.log(currentPos);
+        },100);
+    });
+    $('.d3-end').on('mouseup',function(){
+        isD3Deleteing = false;
+    });
+</script>
+</html>

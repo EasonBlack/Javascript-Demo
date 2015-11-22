@@ -1,0 +1,32 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  margin: 50px;
+}
+.delete-container {
+  position: relative;
+  width: 300px;
+  height: 50px;
+  background-color: #999999;
+  margin-bottom: 20px;
+}
+.delete-container .delete-end {
+  border-bottom: 50px solid red;
+  border-left: 25px solid transparent;
+  height: 0;
+  width: 70px;
+  position: absolute;
+  right: 0;
+}
+.delete-container .delete-start {
+  border-top: 50px solid red;
+  border-right: 25px solid transparent;
+  height: 0;
+  width: 70px;
+  position: absolute;
+  left: 0;
+  transition: left 0.5s ease;
+}
