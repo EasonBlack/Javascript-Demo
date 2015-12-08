@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link  href="../style/bootstrap.css" rel="stylesheet" type="text/css">
+    <link  href="../style/bootstrap-theme.css" rel="stylesheet" type="text/css">
+    <style>
+        body, html {
+            margin:0;
+            padding:0;
+        }
+        .container {
+            margin:20px;
+        }
+        .state-box {
+            width: 200px;
+            height: 80px;
+            background-color: #F6F6F6;
+            position:relative;
+
+            -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            box-shadow:  1px 1px 2px rgba(0,0,0,0.3);
+
+            font-size:12px;
+            font-weight:600;
+        }
+
+        .state-title {
+            padding: 10px 10px 0 10px;
+        }
+
+        .state-name {
+            display:inline-block;
+            color:#3A3B46;
+            font-size:12px;
+            font-weight:600;
+        }
+        .state-submit {
+            float:right;
+            display:inline-block;
+            color: #488fda;
+        }
+        .state-content {
+            padding-left: 10px;
+            padding-top: 10px;
+            color: #C73144;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="state-box">
+       <div class="state-title">
+           <span class="state-name">状态</span>
+           <span class="state-submit">提交</span>
+       </div>
+
+       <div class="state-content">
+           草稿，不可提交
+       </div>
+    </div>
+
+</div>
+
+</body>
+<script src="../vendor/jquery-1.11.1.js"></script>
+</html>
