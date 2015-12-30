@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script src="../vendor/jquery-1.11.1.js"></script>
+<script src="../vendor/lodash.js"></script>
+<script>
+
+    $.getJSON('data/orgList.json',function(data){
+        var _tree = unflatten(data);
+        document.body.innerHTML = "<pre>" + (JSON.stringify(_tree, null, " "))
+    })
+
+    unflatten = function( array, parent, tree ){
+
+        tree = typeof tree !== 'undefined' ? tree : [];
+        parent = typeof parent !== 'undefined' ? parent : { id: 0 };
+
+        var children = _.filter( array, function(child){ return child.parentId == parent.id; });
+
+        if( !_.isEmpty( children )  ){
+            if( parent.id == 0 ){
+                tree = children;
+            }else{
+                parent['children'] = children
+            }
+            _.each( children, function( child ){ unflatten( array, child ) } );
+        }
+
+        return tree;
+    }
+
+//    tree = unflatten( arr );
+//    document.body.innerHTML = "<pre>" + (JSON.stringify(tree, null, " "))
+</script>
+</html>

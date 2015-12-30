@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            font-size:12px;
+        }
+    </style>
+</head>
+<body>
+   <div id="container"></div>
+</body>
+<script src="../vendor/jquery-1.11.1.js"></script>
+<script src="../vendor/lodash.js"></script>
+<script src="../vendor/d3.js"></script>
+<script>
+
+    $.getJSON('data/orgList.json',function(data){
+        var _tree = unflatten(data);
+        console.log(_tree[0]);
+        drawTree(_tree[0]);
+
+    })
+
+    drawTree= function(data) {
+
+        var diameter = 960;
+
+        var canvas = d3.select('#container')
+                .append('svg')
+                .attr("width", diameter)
+                .attr("height", diameter)
+                .append("g")
+                .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
+
+        var tree = d3.layout.tree()
+                .size([360, diameter / 2 - 120])
+                .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
+
+        var diagonal = d3.svg.diagonal.radial()
+                .projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
+
+        var nodes = tree.nodes(data);
+        var links = tree.links(nodes);
+
+        var node= canvas.selectAll('.node')
+                .data(nodes)
+                .enter()
+                .append('g')
+                .attr('class','node')
+                .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
+
+        node.append('circle')
+                .attr('r', 5)
+                .attr('fill', 'steelblue')
+
+        node.append('text')
+                .text(function(d) {return d.name;})
+
+        canvas.selectAll('.link')
+                .data(links)
+                .enter()
+                .append('path')
+                .attr('class', 'link')
+                .attr('fill','none')
+                .attr('stroke', '#ADADAD')
+                .attr('d',diagonal)
+    }
+
+    unflatten = function( array, parent, tree ){
+
+        tree = typeof tree !== 'undefined' ? tree : {};
+        parent = typeof parent !== 'undefined' ? parent : { id: 0 };
+
+        var children = _.filter( array, function(child){ return child.parentId == parent.id; });
+
+        if( !_.isEmpty( children )  ){
+            if( parent.id == 0 ){
+                tree = children;
+            }else{
+                parent['children'] = children
+            }
+            _.each( children, function( child ){ unflatten( array, child ) } );
+        }
+
+        return tree;
+    }
+
+
+</script>
+</html>
