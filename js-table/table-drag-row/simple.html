@@ -49,14 +49,15 @@
 <script src="../../vendor/jquery-1.11.1.js"></script>
 <script>
     var _table = $('#table-1')[0];
-    var dragObject, mouseOffset;
-    var startY = 0;
+    var dragObject, startY;
+    var prevY = 0;
     var sensitivity = 10;
     $(_table.rows).each(function () {
         $(this).bind('mousedown', function (e) {
             if (e.target.tagName == "TD") {
                 dragObject = $(this);
-                mouseOffset = getMouseOffset(this, e);
+                startY = e.pageY;
+
                 $(document)
                         .bind('mousemove', fn_mousemove)
                         .bind('mouseup', fn_mouseup);
@@ -69,7 +70,8 @@
         e.preventDefault();
         dragObject.addClass('drag-style');
 
-        var y = e.pageY - mouseOffset.y;
+        var y = e.pageY - startY;
+
         var currentRow ;
 
         var rowHeight = 0, row = null,
@@ -77,10 +79,11 @@
 
         for (var i = 0; i < rows.length; i++) {
             row = rows[i];
-            rowHeight = parseInt(row.offsetHeight) / 2;
+            rowHeight = row.offsetHeight / 2;
+            //console.log(y, row.offsetTop, rowHeight,row.offsetTop - rowHeight,row.offsetTop + rowHeight )
             if (y > (row.offsetTop - rowHeight ) && y < (row.offsetTop + rowHeight)) {
                 if (dragObject.is(row)) {
-                    currentRow = null;
+                    return
                 } else {
                     currentRow =  row;
                 }
@@ -88,27 +91,19 @@
             }
         }
 
-        var _direction = findDragDirection(y);
+        //方向
+        var _direction =   y > prevY ? 1 : -1;
+        if(_direction) {
+            prevY = y;
+        }
 
-        if(_direction != 0  && currentRow ) {
-            if(_direction > 0) {
-                dragObject[0].parentNode.insertBefore(dragObject[0], currentRow)
-            } else {
+        if(currentRow ) {
+            if(_direction > 0) {     //down
                 dragObject[0].parentNode.insertBefore(dragObject[0], currentRow.nextSibling)
+            } else {   //up
+                dragObject[0].parentNode.insertBefore(dragObject[0], currentRow)
             }
         }
-
-    }
-
-    function findDragDirection(y){
-        var yMin = startY - sensitivity;
-        var yMax = startY + sensitivity
-        var movingd =  y >= yMin && y <= yMax ? 0 : y > startY ? -1 : 1
-        if(movingd) {
-            startY = y;
-        }
-        return movingd;
-
     }
 
     function fn_mouseup(e) {
@@ -117,21 +112,6 @@
                 .unbind('mousemove')
                 .unbind('mouseup');
         dragObject.removeClass('drag-style');
-    }
-
-    function getMouseOffset(target, e) {
-        var mousePos,
-                docPos;
-
-        e = e || window.event;
-
-        docPos    = { x: target.offsetLeft, y: target.offsetTop } ;
-        mousePos  ={ x: e.pageX, y: e.pageY };
-
-        return {
-            x: mousePos.x - docPos.x,
-            y: mousePos.y - docPos.y
-        };
     }
 
 
