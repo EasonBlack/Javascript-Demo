@@ -18,6 +18,7 @@
 <script>
 
     $.getJSON('data/orgList.json',function(data){
+        console.log(data);
         var _tree = unflatten(data);
         console.log(_tree[0]);
         drawTree(_tree[0]);

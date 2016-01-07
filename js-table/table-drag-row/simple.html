@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../../style/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="../../style/bootstrap-theme.css" type="text/css" rel="stylesheet">
+    <link href="style/simple.css" type="text/css" rel="stylesheet">
+    <style>
+
+    </style>
+</head>
+<body>
+
+    <table id="table-1" class='table' cellspacing="0" cellpadding="2">
+        <tr id="1">
+            <td>1</td>
+            <td>One</td>
+            <td>some text</td>
+        </tr>
+        <tr id="2">
+            <td>2</td>
+            <td>Two</td>
+            <td>some text</td>
+        </tr>
+        <tr id="3">
+            <td>3</td>
+            <td>Three</td>
+            <td>some text</td>
+        </tr>
+        <tr id="4">
+            <td>4</td>
+            <td>Four</td>
+            <td>some text</td>
+        </tr>
+        <tr id="5">
+            <td>5</td>
+            <td>Five</td>
+            <td>some text</td>
+        </tr>
+        <tr id="6">
+            <td>6</td>
+            <td>Six</td>
+            <td>some text</td>
+        </tr>
+    </table>
+
+</body>
+<script src="../../vendor/jquery-1.11.1.js"></script>
+<script>
+    var _table = $('#table-1')[0];
+    var dragObject, mouseOffset;
+    var startY = 0;
+    var sensitivity = 10;
+    $(_table.rows).each(function () {
+        $(this).bind('mousedown', function (e) {
+            if (e.target.tagName == "TD") {
+                dragObject = $(this);
+                mouseOffset = getMouseOffset(this, e);
+                $(document)
+                        .bind('mousemove', fn_mousemove)
+                        .bind('mouseup', fn_mouseup);
+                return false;
+            }
+        }).css("cursor", "move");
+    });
+
+    function fn_mousemove(e) {
+        e.preventDefault();
+        dragObject.addClass('drag-style');
+
+        var y = e.pageY - mouseOffset.y;
+        var currentRow ;
+
+        var rowHeight = 0, row = null,
+                rows = _table.rows;
+
+        for (var i = 0; i < rows.length; i++) {
+            row = rows[i];
+            rowHeight = parseInt(row.offsetHeight) / 2;
+            if (y > (row.offsetTop - rowHeight ) && y < (row.offsetTop + rowHeight)) {
+                if (dragObject.is(row)) {
+                    currentRow = null;
+                } else {
+                    currentRow =  row;
+                }
+                break;
+            }
+        }
+
+        var _direction = findDragDirection(y);
+
+        if(_direction != 0  && currentRow ) {
+            if(_direction > 0) {
+                dragObject[0].parentNode.insertBefore(dragObject[0], currentRow)
+            } else {
+                dragObject[0].parentNode.insertBefore(dragObject[0], currentRow.nextSibling)
+            }
+        }
+
+    }
+
+    function findDragDirection(y){
+        var yMin = startY - sensitivity;
+        var yMax = startY + sensitivity
+        var movingd =  y >= yMin && y <= yMax ? 0 : y > startY ? -1 : 1
+        if(movingd) {
+            startY = y;
+        }
+        return movingd;
+
+    }
+
+    function fn_mouseup(e) {
+        e.preventDefault();
+        $(document)
+                .unbind('mousemove')
+                .unbind('mouseup');
+        dragObject.removeClass('drag-style');
+    }
+
+    function getMouseOffset(target, e) {
+        var mousePos,
+                docPos;
+
+        e = e || window.event;
+
+        docPos    = { x: target.offsetLeft, y: target.offsetTop } ;
+        mousePos  ={ x: e.pageX, y: e.pageY };
+
+        return {
+            x: mousePos.x - docPos.x,
+            y: mousePos.y - docPos.y
+        };
+    }
+
+
+</script>
+</html>
