@@ -12,38 +12,45 @@
 </head>
 <body>
 
-    <table id="table-1" class='table' cellspacing="0" cellpadding="2">
-        <tr id="1">
-            <td>1</td>
-            <td>One</td>
-            <td>some text</td>
-        </tr>
-        <tr id="2">
-            <td>2</td>
-            <td>Two</td>
-            <td>some text</td>
-        </tr>
-        <tr id="3">
-            <td>3</td>
-            <td>Three</td>
-            <td>some text</td>
-        </tr>
-        <tr id="4">
-            <td>4</td>
-            <td>Four</td>
-            <td>some text</td>
-        </tr>
-        <tr id="5">
-            <td>5</td>
-            <td>Five</td>
-            <td>some text</td>
-        </tr>
-        <tr id="6">
-            <td>6</td>
-            <td>Six</td>
-            <td>some text</td>
-        </tr>
-    </table>
+<div class="container">
+     <div class="row">
+         <div class="col-sm-6">
+             <table id="table-1" class='table' cellspacing="0" cellpadding="2">
+                 <tr id="1">
+                     <td>1</td>
+                     <td>One</td>
+                     <td>some text</td>
+                 </tr>
+                 <tr id="2">
+                     <td>2</td>
+                     <td>Two</td>
+                     <td>some text</td>
+                 </tr>
+                 <tr id="3">
+                     <td>3</td>
+                     <td>Three</td>
+                     <td>some text</td>
+                 </tr>
+                 <tr id="4">
+                     <td>4</td>
+                     <td>Four</td>
+                     <td>some text</td>
+                 </tr>
+                 <tr id="5">
+                     <td>5</td>
+                     <td>Five</td>
+                     <td>some text</td>
+                 </tr>
+                 <tr id="6">
+                     <td>6</td>
+                     <td>Six</td>
+                     <td>some text</td>
+                 </tr>
+             </table>
+         </div>
+     </div>
+</div>
+
 
 </body>
 <script src="../../vendor/jquery-1.11.1.js"></script>
@@ -55,8 +62,8 @@
         $(this).bind('mousedown', function (e) {
             if (e.target.tagName == "TD") {
                 dragObject = $(this);
-                startY = e.pageY - this.offsetTop;    //如果不减去当前offsetTop，每一次移动都会跳到第一排
-
+                startY = e.pageY  - this.offsetTop;
+                console.log(this.offsetTop);
                 $(document)
                         .bind('mousemove', fn_mousemove)
                         .bind('mouseup', fn_mouseup);

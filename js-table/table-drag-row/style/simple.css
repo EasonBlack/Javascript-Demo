@@ -1,7 +1,13 @@
 .drag-style td {
   background-color: #eee;
-  -webkit-box-shadow: 6px 3px 5px #555555, 0 1px 0 #cccccc inset, 0 -1px 0 #cccccc inset;
+  -webkit-box-shadow: 6px 3px 5px #555, 0 1px 0 #ccc inset, 0 -1px 0 #ccc inset;
 }
 .drag-style td:last-child {
-  -webkit-box-shadow: 1px 8px 6px -4px #555555, 0 1px 0 #cccccc inset, 0 -1px 0 #cccccc inset;
+  -webkit-box-shadow: 1px 8px 6px -4px #555, 0 1px 0 #ccc inset, 0 -1px 0 #ccc inset;
+}
+.container {
+  padding-top: 50px;
+}
+.container .row {
+  margin-top: 30px;
 }
