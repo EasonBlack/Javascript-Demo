@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../style/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="../style/bootstrap-theme.css" type="text/css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 50px;
+        }
+        .item {
+            display: none;
+            height: 440px;
+            width: 300px;
+            margin-bottom: 13px;
+            background-color: #AAAAAA;
+            line-height: 40px;
+            text-align: center;
+        }
+        ._show {
+            display:block;
+        }
+
+        ._hide {
+
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="item _show">I1</div>
+    <div class="item _show">I2</div>
+    <div class="item _show">I3</div>
+    <div class="item ">I4</div>
+    <div class="item ">I5</div>
+    <div class="item ">I6</div>
+</div>
+</body>
+<script src="../vendor/jquery-1.11.1.js"></script>
+<script src="../vendor/lodash.js"></script>
+<script>
+     var _index = 3;
+    $(window).scroll( function(){
+
+        var bottom_of_window = $(window).scrollTop()+$(window).height();
+        var document_height = $(document).height();
+        if( bottom_of_window >= document_height ){
+            var _i = _index+1 ;
+            $('.container .item:nth-child('+_i+')').show();
+            _index ++;
+        }
+
+    });
+</script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../style/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="../style/bootstrap-theme.css" type="text/css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 50px;
+        }
+        .item {
+            display: block;
+            height: 440px;
+            width: 300px;
+            margin-bottom: 13px;
+            background-color: #AAAAAA;
+            line-height: 40px;
+            text-align: center;
+        }
+        ._hide {
+            opacity:0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="item ">I1</div>
+    <div class="item ">I2</div>
+    <div class="item ">I3</div>
+    <div class="item _hide">I4</div>
+    <div class="item _hide">I5</div>
+    <div class="item _hide">I6</div>
+</div>
+</body>
+<script src="../vendor/jquery-1.11.1.js"></script>
+<script src="../vendor/lodash.js"></script>
+<script>
+    $(window).scroll( function(){
+
+        $('.item').each( function(i){
+            var bottom_of_object = $(this).offset().top;  // + $(this).outerHeight();
+            var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+            if( bottom_of_window > bottom_of_object ){
+                $(this).animate({'opacity':'1'},500);
+            }
+        });
+
+    });
+</script>
+</html>

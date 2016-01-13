@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../style/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="../style/bootstrap-theme.css" type="text/css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 50px;
+        }
+        .item {
+            display: none;
+            height: 40px;
+            width: 200px;
+            margin-bottom: 3px;
+            background-color: #AAAAAA;
+            line-height: 40px;
+            text-align: center;
+
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="item">I1</div>
+    <div class="item">I2</div>
+    <div class="item">I3</div>
+    <div class="item">I4</div>
+    <div class="item">I5</div>
+    <div class="item">I6</div>
+</div>
+</body>
+<script src="../vendor/jquery-1.11.1.js"></script>
+<script src="../vendor/lodash.js"></script>
+<script>
+    $('.item').each(function(index, value){
+        $(this).delay(500* index).show(0);
+    });
+</script>
+</html>
