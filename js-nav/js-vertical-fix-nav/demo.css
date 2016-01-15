@@ -1,0 +1,105 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.vertical-nav {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 5%;
+  height: 100vh;
+  z-index: 5;
+  display: table;
+  transform: scale(1);
+  transition: transform 0.2s;
+}
+.vertical-nav::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateX(100%);
+  transition: transform 0.4s;
+}
+.vertical-nav:hover::before {
+  transform: translateX(0);
+}
+.vertical-nav:hover a::before {
+  transform: translateX(0) scale(1);
+}
+.vertical-nav:hover a::after {
+  transform: translateX(0) scale(1);
+}
+.vertical-nav:hover a {
+  padding-top: 35px;
+}
+.vertical-nav:hover .label {
+  transform: translateX(0);
+}
+.vertical-nav .label {
+  display: block;
+  transform: translateX(100%);
+  transition: transform 0.4s;
+  text-align: center;
+}
+.vertical-nav ul {
+  list-style: none;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.vertical-nav ul li:nth-of-type(1) a::after {
+  content: '\e002';
+}
+.vertical-nav ul li:nth-of-type(2) a::after {
+  content: '\e003';
+}
+.vertical-nav ul li a {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  vertical-align: baseline;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  transition: padding 0.4s 0s;
+}
+.vertical-nav ul li a:after {
+  transition: transform 0.4s 0s;
+  transform: translateX(-50%) scale(0);
+  top: 8px;
+  position: absolute;
+  left: calc(43%);
+  display: block;
+}
+.vertical-nav ul li a:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: calc(34%);
+  transition: transform 0.4s 0s;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #eaf2e3;
+  transform: translateX(-50%) scale(0.25);
+}
+.pg-section {
+  height: 100vh;
+  width: 100%;
+  display: table;
+  position: relative;
+}
+.pg-section .content-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+#section1 {
+  background: #339999;
+}
+#section2 {
+  background: #003366;
+}

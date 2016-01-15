@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        nav {
+            position:fixed;
+            right:0;
+            bottom:0;
+            width:5%;
+            height:100vh;
+            background: #dddddd;
+            display:table;
+        }
+
+        ul {
+            padding:0;
+            display:table-cell;
+            list-style:none;
+            vertical-align: middle;
+        }
+
+        li {
+            margin-bottom:26px;
+            padding-top:15px;
+        }
+
+        a {
+            position: relative;
+            display: block;
+            text-decoration: none;
+            vertical-align: baseline;
+            margin-top:16px;
+            margin-bottom:16px;
+            padding-top:35px;
+        }
+
+        a:before {
+            content:'';
+            width:32px;
+            height:32px;
+            border-radius:50%;
+            top: 0;
+            left: calc(50% - 16px);
+            position:absolute;
+            background-color: #00B7FF;
+        }
+
+        .label {
+            display: block;
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+   <nav>
+       <ul>
+           <li><a href="#section1" class="active"><span class="label">Intro</span></a></li>
+           <li><a href="#section2" ><span class="label">Event</span></a></li>
+       </ul>
+   </nav>
+</body>
+</html>

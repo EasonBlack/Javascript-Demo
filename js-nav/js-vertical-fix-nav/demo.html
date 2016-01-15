@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../../style/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="../../style/bootstrap-theme.css" type="text/css" rel="stylesheet">
+    <link href="demo.css" type="text/css" rel="stylesheet">
+    <style>
+
+    </style>
+</head>
+<body>
+<nav class="vertical-nav">
+    <ul>
+        <li><a href="#section1" class="active glyphicon"><span class="label">Intro</span></a></li>
+        <li><a href="#section2" class="glyphicon" ><span class="label">Event</span></a></li>
+    </ul>
+</nav>
+<section id="section1" class="pg-section">
+    <div class="content-wrapper">
+        <h1>Vertical Fixed Navigation #1</h1>
+    </div>
+</section>
+<section id="section2" class="pg-section">
+    <div class="content-wrapper">
+        <h1>Vertical Fixed Navigation #2</h1>
+    </div>
+</section>
+</body>
+<script src="../../vendor/jquery-1.11.1.js"></script>
+<script src="../../vendor/lodash.js"></script>
+<script>
+    $('a').click(function(){
+        $('html, body').animate({
+            scrollTop: $($.attr(this, 'href')).offset().top
+        }, 500);
+        return false;
+    });
+</script>
+</html>
