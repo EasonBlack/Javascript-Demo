@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .container {
+            position:relative;
+            left: 10px;
+            top:10px;
+            width:100px;
+            height:100px;
+            border:1px solid #dddddd;
+        }
+
+        .dot {
+            position:relative;
+            width:10px;
+            height:10px;
+            left: 0px;
+            top:0px;
+            border-radius: 50%;
+            background-color: #080808;
+        }
+
+        @keyframes straightLine {
+            50% {
+                transform: translate3D(90px, 90px, 0);
+            }
+        }
+
+        @keyframes xAxis {
+            50% {
+                animation-timing-function: ease-in;
+                transform: translateX(90px);
+            }
+        }
+
+        @keyframes yAxis {
+            50% {
+                animation-timing-function: ease-out;
+                transform: translateY(90px);
+            }
+        }
+
+        .dot1 {
+            animation: straightLine 2.5s infinite linear;
+        }
+
+        .dot2 {
+            background-color: white;
+            animation: xAxis 2.5s infinite ease-in;
+        }
+
+        .dot2::after {
+            content:'';
+            position:absolute;
+            width:10px;
+            height:10px;
+            left: 0px;
+            top:0px;
+            border-radius: 50%;
+            background-color: #080808;
+            animation: yAxis 2.5s infinite ease-out;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="dot dot1"></div>
+</div>
+
+<div class="container">
+    <div class="dot dot2"></div>
+</div>
+
+</body>
+</html>
