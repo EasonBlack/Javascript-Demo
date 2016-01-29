@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        ul {
+            list-style:none;
+            overflow:hidden;
+            display:block;
+            list-style: none;
+            width: 400px;
+            height: 200px;
+
+        }
+
+
+        .container {
+            position:relative
+        }
+        .container li {
+            position:absolute;
+            top:0;
+            left:0;
+        }
+
+        .container li.li2 {
+            position:absolute;
+            top:0;
+            left:0;
+            transform:translateX(100%);
+            transition:transform 0s;
+        }
+
+        .container li.li2 .text-c {
+            position: relative;
+            z-index:2;
+            transform:translateX(200%);
+            transition:transform 4s ease-in-out;
+        }
+
+        .container li.li2 .image-c {
+            position: relative;
+            z-index:1;
+            transform:translateX(100%);
+            transition:transform 0s 2s;
+        }
+
+        .container li.is-visible {
+            transform:translateX(0);
+        }
+        .container li.is-visible  .text-c{
+            transform:translateX(0);
+        }
+        .container li.is-visible  .image-c{
+            transform:translateX(0);
+        }
+
+        .box {
+            width:200px;
+            height:200px;
+            float:left;
+        }
+
+        .text1 {
+            background-color: #FFCCCC;
+        }
+        .text2 {
+            background-color: #99CCCC;
+        }
+
+        .img1 {
+            background-image: url(images/img-1.jpg);
+        }
+        .img2 {
+            background-image: url(images/img-2.jpg);
+        }
+
+
+
+    </style>
+</head>
+<body>
+   <div >
+       <ul class="container">
+           <li class="li1">
+               <div class="box text-c text1"></div>
+               <div class="box image-c img1">aa</div>
+           </li>
+           <li class="li2">
+               <div class="box text-c text2"></div>
+               <div class="box image-c img2">bb</div>
+           </li>
+       </ul>
+
+   </div>
+<button id="bt1">Click Me</button>
+</body>
+<script src="../../vendor/jquery-1.11.1.js"></script>
+<script>
+     $('#bt1').click(function(){
+            $('.li2').addClass('is-visible');
+     })
+
+</script>
+</html>

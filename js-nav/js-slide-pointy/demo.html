@@ -38,23 +38,17 @@
 </div>
 </body>
 <script src="../../vendor/jquery-1.11.1.js"></script>
-<script src="../../vendor/lodash.js"></script>
 <script>
 
  $('.point-button').on('click','li',function(e){
 
      var _index = $(this).parent().children().index(this);
-     var _currentDom = $('.text-container-active').parent();
-     var _current = $('.content-container  li').index(_currentDom);
-     var _other = $( ".content-container li:nth-child("+ (_index+1) +")").siblings();
+     var _slide =  $( ".content-container li");
+     _slide.eq(_index).addClass('is-visible').removeClass('covered')
+             .prevAll('li').addClass('is-visible covered').end()
+             .nextAll('li').removeClass('is-visible covered');
 
 
-     $( ".content-container li:nth-child("+ (_index+1) +")").find('.text-container').addClass('text-container-active');
-     $( ".content-container li:nth-child("+ (_index+1) +")").find('.image-container').addClass('image-container-active');
-     setTimeout(function(){
-         _other.find('.text-container-active').removeClass('text-container-active')
-         _other.find('.image-container-active').removeClass('image-container-active')
-     },660);
 
  });
 </script>
