@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+ul {
+  list-style: none;
+}
+.container {
+  width: 90%;
+  height: 100%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  overflow: hidden;
+}
+.container .content-container {
+  height: 100%;
+  width: 100%;
+  display: block;
+  overflow: hidden;
+}
+.container .content-container li {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateX(100%);
+}
+.container .content-container li .text-container {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  float: left;
+  text-align: center;
+  transform: translateX(0%);
+}
+.container .content-container li .text-container-active {
+  transform: translateX(-200%);
+  transition: transform 0.6s 0s ease-in-out;
+}
+.container .content-container li .text-container-back {
+  transform: translateX(0%);
+  transition: transform 0.6s 0s ease-in-out;
+}
+.container .content-container li .text-container-visible {
+  transform: translateX(-200%);
+  transition: transform 0s 0.3;
+}
+.container .content-container li .image-container {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  float: left;
+  text-align: center;
+  transform: translateX(0%);
+}
+.container .content-container li .image-container-active {
+  transform: translateX(-100%);
+  transition: transform 0s 0.3s;
+}
+.container .content-container li .image-container-back {
+  transform: translateX(0%);
+  transition: transform 0s 0.3s;
+}
+.container .content-container li .image-container-visible {
+  transform: translateX(-100%);
+  transition: transform 0s  0.3;
+}
+.container .content-container li .text1 {
+  background-color: #FFCCCC;
+}
+.container .content-container li .text2 {
+  background-color: #99CCCC;
+}
+.container .content-container li .text3 {
+  background-color: #0099CC;
+}
+.container .content-container li .text4 {
+  background-color: #CCCC99;
+}
+.container .content-container li .img1 {
+  background-image: url(images/img-1.jpg);
+}
+.container .content-container li .img2 {
+  background-image: url(images/img-2.jpg);
+}
+.container .content-container li .img3 {
+  background-image: url(images/img-3.jpg);
+}
+.container .content-container li .img4 {
+  background-image: url(images/img-4.jpg);
+}
+.container .point-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.container .point-container ul li {
+  display: block;
+  float: left;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+}

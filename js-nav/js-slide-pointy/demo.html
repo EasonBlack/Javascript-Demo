@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="demo.css" type="text/css" rel="stylesheet">
+
+</head>
+<body>
+<div class="container">
+    <ul class="content-container">
+        <li>
+            <div class="text-container text1">a</div>
+            <div class="image-container img1"></div>
+        </li>
+        <li>
+            <div class="text-container text2">b</div>
+            <div class="image-container img2">2</div>
+        </li>
+        <li>
+            <div class="text-container text3">c</div>
+            <div class="image-container img3">3</div>
+        </li>
+        <li>
+            <div class="text-container text4">d</div>
+            <div class="image-container img4">4</div>
+        </li>
+    </ul>
+
+    <div class="point-container">
+        <ul class="point-button">
+            <li>01</li>
+            <li>02</li>
+            <li>03</li>
+            <li>04</li>
+        </ul>
+    </div>
+</div>
+</body>
+<script src="../../vendor/jquery-1.11.1.js"></script>
+<script src="../../vendor/lodash.js"></script>
+<script>
+
+ $('.point-button').on('click','li',function(e){
+
+     var _index = $(this).parent().children().index(this);
+     var _currentDom = $('.text-container-active').parent();
+     var _current = $('.content-container  li').index(_currentDom);
+     var _other = $( ".content-container li:nth-child("+ (_index+1) +")").siblings();
+
+
+     $( ".content-container li:nth-child("+ (_index+1) +")").find('.text-container').addClass('text-container-active');
+     $( ".content-container li:nth-child("+ (_index+1) +")").find('.image-container').addClass('image-container-active');
+     setTimeout(function(){
+         _other.find('.text-container-active').removeClass('text-container-active')
+         _other.find('.image-container-active').removeClass('image-container-active')
+     },660);
+
+ });
+</script>
+</html>
