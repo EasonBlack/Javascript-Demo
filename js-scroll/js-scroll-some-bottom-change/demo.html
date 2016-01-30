@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="demo.css" type="text/css" rel="stylesheet">
+    <style>
+
+    </style>
+</head>
+<body>
+<header class="container-fluid header-container">
+</header>
+<div class="container-fluid container-wrap">
+    <div class="content-container">
+        <h3>This is Title</h3>
+
+        <div>
+            content content content content content content content content content content content content
+            content content content content content content content content content content content content
+            content content content content content content content content content content content content
+            content content content content content content content content content content content content
+        </div>
+        <div>
+            content content content content content content content content content content content content
+            content content content content content content content content content content content content
+            content content content content content content content content content content content content
+            content content content content content content content content content content content content
+        </div>
+        <div>
+            content content content content content content content content content content content content
+            content content content content content content content content content content content content
+            content content content content content content content content content content content content
+            content content content content content content content content content content content content
+        </div>
+        <div>
+            content content content content content content content content content content content content
+            content content content content content content content content content content content content
+            content content content content content content content content content content content content
+            content content content content content content content content content content content content
+        </div>
+        <div>
+            content content content content content content content content content content content content
+            content content content content content content content content content content content content
+            content content content content content content content content content content content content
+            content content content content content content content content content content content content
+        </div>
+        <div>
+            content content content content content content content content content content content content
+            content content content content content content content content content content content content
+            content content content content content content content content content content content content
+            content content content content content content content content content content content content
+        </div>
+        <div>
+            content content content content content content content content content content content content
+            content content content content content content content content content content content content
+            content content content content content content content content content content content content
+            content content content content content content content content content content content content
+        </div>
+    </div>
+    <div class="margin-div"></div>
+    <div class="footer-container"></div>
+    <div class="bottom-container">
+        <ul>
+            <li>
+
+            </li>
+            <li>
+
+            </li>
+            <li>
+
+            </li>
+        </ul>
+    </div>
+
+
+</div>
+</body>
+<script src="../../vendor/jquery-1.11.1.js"></script>
+<script src="../../vendor/lodash.js"></script>
+<script>
+    $(window).scroll(function () {
+
+        var bottom_of_window = $(window).scrollTop() + $(window).height();
+        var document_height = $(document).height();
+        var _offset = 50
+        console.log(bottom_of_window, document_height);
+        if (bottom_of_window + _offset >= document_height) {
+            $('.bottom-container').addClass('is-visible');
+            $('.footer-container').addClass('small');
+        } else {
+            $('.bottom-container').removeClass('is-visible');
+            $('.footer-container').removeClass('small');
+        }
+    });
+</script>
+</html>
