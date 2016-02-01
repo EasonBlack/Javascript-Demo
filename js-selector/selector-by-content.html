@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div class="container">
+    <div class="items-container">
+        <a>xxxxx</a>
+    </div>
+    <div class="items-container">
+        <a>yyyyy</a>
+    </div>
+    <div class="items-container">
+        <a>zzzzz</a>
+    </div>
+</div>
+</body>
+<script src="../vendor/jquery-1.11.1.js"></script>
+<script>
+    var $d = $("a:contains('xxxx')");
+    var tagName = $d[0].tagName;
+    var result = [];
+    result.push('a');
+    while(tagName!=='BODY') {
+        console.log(tagName)
+       var $parent =  $d.parent();
+       var _class = $parent.attr('class');
+       var _id = $parent.attr('id');
+        if(_id) {
+            result.push('#'+_id);
+            break;
+        } else if(_class) {
+            result.push('.'+_class);
+        }
+
+        $d = $parent;
+        tagName = $d[0].tagName;
+    }
+    console.log(result);
+    console.log(result.reverse().join(' '));
+</script>
+</html>
