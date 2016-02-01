@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../../style/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="../../style/bootstrap-theme.css" type="text/css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 50px;
+        }
+
+        .container {
+            width: 600px;
+            height: 500px;
+            border: 1px solid #000000;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y:hidden;
+            overflow-x:scroll;
+            white-space: nowrap;
+        }
+
+        section {
+            display:inline-block;
+            width:400px;
+            height:400px;
+            background-color:#dddddd;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+   <section>
+       <p>asd asdf asdf asdf asdf asd fasd fasdf asd fasd f</p>
+   </section>
+    <section>
+        <p>asd asdf asdf asdf asdf asd fasd fasdf asd fasd f</p>
+    </section>
+    <section>
+        <p>asd asdf asdf asdf asdf asd fasd fasdf asd fasd f</p>
+    </section>
+    <section>
+        <p>asd asdf asdf asdf asdf asd fasd fasdf asd fasd f</p>
+    </section>
+    <section>
+        <p>asd asdf asdf asdf asdf asd fasd fasdf asd fasd f</p>
+    </section>
+    <section>
+        <p>asd asdf asdf asdf asdf asd fasd fasdf asd fasd f</p>
+    </section>
+    <section>
+        <p>asd asdf asdf asdf asdf asd fasd fasdf asd fasd f</p>
+    </section>
+    <section>
+        <p>asd asdf asdf asdf asdf asd fasd fasdf asd fasd f</p>
+    </section>
+    <section>
+        <p>asd asdf asdf asdf asdf asd fasd fasdf asd fasd f</p>
+    </section>
+</div>
+</body>
+<script src="../../vendor/jquery-1.11.1.js"></script>
+<script src="../../vendor/jquery.mousewheel.js"></script>
+<script src="../../vendor/lodash.js"></script>
+<script>
+    $(".container").mousewheel(function(event, delta) {
+
+        this.scrollLeft -= (delta * 40);
+
+        event.preventDefault();
+
+    });
+</script>
+</html>
