@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="main.css" type="text/css" rel="stylesheet">
+
+</head>
+<body>
+<div class="ul-wrapper">
+    <ul>
+        <li>
+            <div class="content"></div>
+        </li>
+        <li>
+            <div class="content"></div>
+        </li>
+    </ul>
+</div>
+<div class="ul-console">
+    <a class="add-button"></a>
+</div>
+</body>
+<script src="../../vendor/jquery-1.11.1.js"></script>
+<script src="../../vendor/lodash.js"></script>
+<script>
+
+    $('.add-button').click(function (e) {
+        var $target = $(e.target);
+        var $ul = $('.ul-wrapper ul');
+        $target.toggleClass('active');
+        $ul.toggleClass('normal');
+    })
+</script>
+</html>

@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  width: 100%;
+}
+
+.ul-wrapper {
+  position: relative;
+  margin-top: 50px;
+  margin-left: 20px;
+
+  ul {
+    position: absolute;
+    top: 5px;
+    left: calc(~"100% - 10px");
+    list-style: none;
+    transform:scale(0);
+    transition:all 1s;
+    transform-origin: left top;
+  }
+
+  ul.normal {
+    transform:scale(1);
+    left: 5px;
+  }
+
+  li {
+    display: block;
+    margin-bottom: 20px;
+    .content {
+      width: 100px;
+      height: 100px;
+      border: 4px solid #3e8f3e;
+      border-radius: 5%;
+    }
+  }
+
+}
+
+
+.ul-console {
+  position: absolute;
+  margin-right: 10px;
+  width: 300px;
+  min-height: 300px;
+  right: 0;
+  .add-button {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-color: #245269;
+    border-radius: 50%;
+    position:relative;
+    &::before {
+      content: '';
+      position:absolute;
+      width: 90%;
+      height:4px;
+      left:5%;
+      top:calc(~"50% - 2px");
+      background-color:white;
+      transition:transform  0.5s;
+    }
+    &::after {
+      content: '';
+      position:absolute;
+      height:  90%;
+      width:4px;
+      top:5%;
+      left:calc(~"50% - 2px");
+      background-color:white;
+      transition:transform  0.5s;
+    }
+  }
+
+  .add-button.active {
+    &::before {
+      transform:rotate(90deg)
+    }
+    &::after {
+      transform:rotate(90deg)
+    }
+  }
+
+}
