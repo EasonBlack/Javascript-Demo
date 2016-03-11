@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script>
+    function PriorityQueue() {
+        this._nodes = [];
+
+        this.enqueue = function (key, priority) {
+            this._nodes.push({key: key, priority: priority});
+            this.sort();
+        }
+        this.dequeue = function () {
+            return this._nodes.shift().key;
+        }
+        this.sort = function () {
+            this._nodes.sort(function (a, b) {
+                return a.priority - b.priority;
+            });
+        }
+        this.isEmpty = function () {
+            return !this._nodes.length;
+        }
+    }
+
+    function Graph() {
+        this.vertices = {};     //原始路径
+        this.previous = {};     //用于存储最小值的路径顺序
+        this.addVertex = function (name, edges) {
+            this.vertices[name] = edges;
+        }
+
+        this.setShortestPath = function (start, end) {
+            this.start = start;
+            this.end = end
+            var nodes = new PriorityQueue(),  //存储所有供于比较的距离点
+                    distances = {},    //用于存储最小值
+                    smallest, vertex, neighbor, alt;
+
+            for (vertex in this.vertices) {
+                if (vertex === start) {
+                    distances[vertex] = 0;
+                    nodes.enqueue(vertex, 0);
+                }
+                this.previous[vertex] = null;
+            }
+
+            while (!nodes.isEmpty()) {
+                smallest = nodes.dequeue();
+
+                if (smallest === end) {
+                    break;
+                }
+
+                for (neighbor in this.vertices[smallest]) {
+                    alt = distances[smallest] + this.vertices[smallest][neighbor];
+                    if ( distances[neighbor]==undefined || (alt < distances[neighbor])) {
+                        distances[neighbor] = alt;
+                        this.previous[neighbor] = smallest;
+                        nodes.enqueue(neighbor, alt);
+                    }
+                }
+            }
+            return this;
+        }
+
+        this.getShortestPath = function(){
+            var path = [];
+            var end = this.end;
+            var start = this.start;
+            while (this.previous[end]) {
+                path.push(end);
+                end = this.previous[end];
+            }
+            return path.concat(start).reverse();
+        }
+    }
+
+    var g = new Graph();
+
+    g.addVertex('A', {B: 7, C: 1});
+    g.addVertex('B', {A: 7, F: 2});
+    g.addVertex('C', {A: 1, F: 6, G: 4});
+    g.addVertex('D', {F: 8});
+    g.addVertex('E', {H: 1});
+    g.addVertex('F', {B: 2, C: 6, D: 8, G: 9, H: 3});
+    g.addVertex('G', {C: 4, F: 9});
+    g.addVertex('H', {E: 1, F: 3});
+
+    document.write(g.setShortestPath('A', 'H').getShortestPath());
+
+
+
+</script>
+</html>
