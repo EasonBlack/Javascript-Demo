@@ -1,0 +1,31 @@
+.plus-minus {
+  position: relative;
+}
+.plus-minus::after {
+  content: '';
+  position: absolute;
+  right: 0px;
+  top: 36%;
+  height: 2px;
+  width: 20px;
+  background-color: black;
+  transition: all 0.5s ease;
+}
+.plus-minus::before {
+  content: '';
+  position: absolute;
+  right: 9px;
+  top: 0;
+  height: 20px;
+  width: 2px;
+  background-color: black;
+  transition: all 0.5s ease;
+}
+.plus-minus.active::after {
+  transform: rotate(180deg);
+  transform-origin: 50% 50%;
+}
+.plus-minus.active::before {
+  transform: rotate(90deg);
+  transform-origin: 50% 50%;
+}

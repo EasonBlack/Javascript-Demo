@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="style/main.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="card-wrapper">
+        <div class="card-content card-omission">要做一个项目，不单单是用React一个框架的事儿。React只是一个用户界面框架，如果拿MVC概念来说的话也只是V。
+            当然前端开发中视图是最重要的，但是如果不控制好数据和逻辑到后面会越来越痛苦。于是要考虑如何管理数据。
+            脸书官方推荐的是Flux，但听说连Flux都有些过时了，干脆用个最新最火的Redux。其实两者思路是一样的，据说后者更易用。
+            单页应用总得处理路由，可选余地很多，为了风格统一还是选用配套的react-router，为了管理方便，再用个redux-router。
+            打包工具总得有，要不开发太受限，还是选最新最火的webpack，这样就可以用各种风格的模块系统，连样式和图片都能搁到模块系统里。
+            语言上嘛，我原本推崇coffee，而且也有现成的coffee-jsx编译器，但是看react社区都对ES6青睐有加，
+            了解了ES6的特性后，觉得一部分跟coffee挺像，还有一些确实超越了coffee，那就忍痛舍弃缩进语法、一切皆表达式这些特性，用ES6吧！
+        </div>
+        <div class="card-extend">
+            <div class="card-row">
+                <div class="row-title">Type</div>
+                <span>xxxxxx</span>
+            </div>
+            <div class="card-row">
+                <div class="row-title">Time</div>
+                <span>xxxxxx</span>
+            </div>
+            <div class="card-row card-source">
+                <div class="row-title">Source</div>
+                <span>xxxxxx</span>
+            </div>
+            <div class="card-row card-lead">
+                <div class="row-title">Lead</div>
+                <div class="row-action plus-minus">&nbsp;</div>
+            </div>
+            <div class="card-row card-relate">
+                <div class="row-title">Relate</div>
+                <div class="row-action plus-minus">&nbsp;</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script src="../../vendor/jquery-1.11.1.js"></script>
+<script src="../../vendor/lodash.js"></script>
+<script>
+    $('.plus-minus').on('click', function (e) {
+         $(e.target).toggleClass('active');
+    });
+    $('.card-content').on('click',function(e){
+        $(e.target).toggleClass('card-omission');
+        $(e.target).toggleClass('card-scroll');
+        $(e.target).animate({scrollTop:  0 }, "fast");
+    });
+</script>
+</html>
