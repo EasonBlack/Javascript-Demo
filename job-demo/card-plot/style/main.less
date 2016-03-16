@@ -46,6 +46,49 @@ body, html {
     padding-bottom: 0px;
     background-color: #339966;
     color: white;
+
+    .card-content-close {
+      background-color: rgba(48,113,169,0);
+      border-radius: 50%;
+      width:30px;
+      height:30px;
+      position:absolute;
+      right:5px;
+      top:5px;
+      transition: all 0.5s ease;
+
+      &:hover {
+        background-color: rgba(48,113,169,1);
+      }
+      &:hover::after {
+        display:block;
+      }
+      &:hover::before {
+        display:block;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        width: 30px;
+        height: 2px;
+        transform: rotate(45deg);
+        background-color: white;
+        display: none;
+        top: 50%;
+        left: 0px;
+      }
+      &::before{
+        content: '';
+        position: absolute;
+        width: 30px;
+        height: 2px;
+        transform: rotate(-45deg);
+        background-color: white;
+        display: none;
+        top: 50%;
+        left: 0px;
+      }
+    }
   }
 
   .card-omission {
