@@ -4,6 +4,12 @@ module.exports = {
         path: "./build",
         filename: "bundle.js"
     },
+    devtool: 'source-map',
+    resolve: {
+        alias: {
+            dustjs: 'dustjs-linkedin'
+        }
+    },
     module: {
         loaders: [
             {
@@ -12,6 +18,7 @@ module.exports = {
                     presets: ['es2015']
                 }
             }
+            ,{ test: /\.dust$/, loader: "dust-loader-complete" }
         ]
     }
 }

@@ -1,5 +1,10 @@
 import Box from './box.js';
-import
+import $ from 'jquery';
+import page1Template from '../template/temp1.dust';
 
-var body = document.querySelector('body');
-body.textContent = 'Good point: ' + new Box(1, 23);
+$('#container1').html('sssss');
+$('#container2').html( 'Good point: ' + new Box(1, 23).toString());
+
+page1Template({test: 'good3'},function(err,out){
+    $('#container3').html(out);
+});
