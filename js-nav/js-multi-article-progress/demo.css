@@ -38,3 +38,32 @@
   top: 0;
   left: 0;
 }
+.demo2 aside ul li {
+  border-bottom: 0px;
+}
+.demo2 aside ul li a em {
+  width: 80px;
+  transition: background-color 1s ease;
+  border-radius: 50%;
+  height: 40px;
+  line-height: 40px;
+}
+.demo2 aside ul li a em.active {
+  background-color: steelblue;
+  border-radius: 50%;
+  animation: animateRadius 1s ease-out;
+}
+@keyframes animateRadius {
+  10% {
+    border-radius: 40% 40% 40% 40%;
+  }
+  40% {
+    border-radius: 50% 50% 50% 50%;
+  }
+  70% {
+    border-radius: 40% 40% 40% 40%;
+  }
+  100% {
+    border-radius: 50% 50% 50% 50%;
+  }
+}

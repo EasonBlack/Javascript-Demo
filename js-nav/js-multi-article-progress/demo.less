@@ -1,0 +1,81 @@
+.container {
+  width: 50%;
+
+  article {
+    width: 60%;
+  }
+
+  aside {
+    position: fixed;
+    top: 50px;
+    right: 25%;
+    width: 300px;
+  }
+
+  ul {
+    list-style: none;
+    li {
+      text-align: center;
+      border-bottom: 1px solid #dddddd;
+      line-height: 30px;
+      position: relative;
+      a {
+        text-decoration: none;
+      }
+
+      em {
+        z-index: 5;
+        display: block;
+        color: black;
+        position: relative;
+      }
+
+      .a-progress {
+        display: block;
+        height: 30px;
+        background-color: #dddddd;
+        width: 0%;
+        position: absolute;
+        transition: width 1s;
+        top: 0;
+        left: 0;
+      }
+
+    }
+  }
+}
+
+.demo2 {
+  aside ul li {
+    border-bottom: 0px;
+  }
+  aside ul li a em  {
+    width: 80px;
+    transition: background-color 1s ease;
+    border-radius: 50%;
+    height: 40px;
+    line-height: 40px;
+  }
+
+  aside ul li a em.active {
+    background-color: steelblue;
+    border-radius: 50%;
+    animation: animateRadius 1s ease-out;
+  }
+}
+
+@keyframes animateRadius {
+  10% {
+    border-radius: 40% 40% 40% 40%;
+  }
+  40% {
+    border-radius: 50% 50% 50% 50%;
+  }
+  70% {
+    border-radius: 40% 40% 40% 40%;
+  }
+  100% {
+    border-radius: 50% 50% 50% 50%;
+  }
+}
+
