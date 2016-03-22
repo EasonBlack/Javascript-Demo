@@ -1,10 +1,38 @@
-import Box from './box.js';
 import $ from 'jquery';
-import page1Template from '../template/temp1.dust';
+import _ from 'lodash';
+import Box from './box.js';
+import boxTemplate from '../template/box.dust';
 
-$('#container1').html('sssss');
-$('#container2').html( 'Good point: ' + new Box(1, 23).toString());
+let self = {};
 
-page1Template({test: 'good3'},function(err,out){
-    $('#container3').html(out);
+$.get('data/boxes.json')
+    .done(function (data) {
+        self.source = data;
+        var _d = data[0];
+        console.log(data);
+        boxTemplate(_d, function (err, out) {
+            $('#container').append(out)
+        });
+    });
+
+
+$('#container').on('click', '.plus-minus', function (e) {
+    $(e.target).toggleClass('active');
 });
+
+$('#container').on('click', '.card-lead .plus-minus', function (e) {
+    alert(1);
+});
+
+
+$('#container').on('click', '.card-content', function (e) {
+    $(e.target).toggleClass('card-omission');
+    $(e.target).toggleClass('card-scroll');
+    $(e.target).animate({scrollTop: 0}, "fast");
+});
+
+function getArrayData(arr) {
+    return _.filter(self.source, function (d) {
+        return arr.indexOf(d.id) > -1;
+    })
+}

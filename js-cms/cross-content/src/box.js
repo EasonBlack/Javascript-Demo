@@ -1,10 +1,22 @@
 class Box {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
+    constructor(object) {
+        this.box = {
+            content : object.content,
+            leadTo: object.leadTo,
+            relateTo: object.relateTo
+        }
     }
-    toString() {
-        return '('+this.x+','+this.y+')';
+
+    getInfo() {
+        return this.box;
+    }
+
+    getLeadToBoxed() {
+
+    }
+
+    getRelateToBoxed() {
+
     }
 }
 export default Box;

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid steelblue;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="box x1y1" data-position="1-1" style="top:100px; left:100px;">x1y1</div>
+</div>
+</body>
+<script src="../../vendor/jquery-1.11.1.js"></script>
+<script>
+    var step = 10;
+    var width = 100;
+    var height = 100;
+    $('.container').on('click', '.box', function () {
+        var _position = $(this).data('position');
+        var _top = parseInt($(this).css('top'));
+        var _left = parseInt($(this).css('left'));
+        var _p_y = _position.split('-')[0];
+        var _p_x = _position.split('-')[1];
+        var _p_newy = parseInt(_p_y) + 1;
+        var _p_newx = parseInt(_p_x) + 1;
+
+        createBox(_p_newx, _p_y, _top, _left + width + step);
+        createBox(_p_x, _p_newy, _top + height + step, _left);
+    })
+
+    function createBox(x, y, top, left) {
+        $('.' + 'x' + x + 'y' + y).remove();
+        var newBox = document.createElement('div');
+        var $newBox = $(newBox);
+        $newBox.addClass('box').addClass('x' + x + 'y' + y);
+        $newBox.html('x' + x + 'y' + y);
+        $newBox.data('position', y + '-' + x);
+        $newBox.css({
+            top: top + 'px',
+            left: left + 'px'
+        });
+        $('.container').append($newBox);
+    }
+</script>
+</html>

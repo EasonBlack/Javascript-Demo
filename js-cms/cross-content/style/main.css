@@ -1,0 +1,157 @@
+.plus-minus {
+  position: relative;
+}
+.plus-minus::after {
+  content: '';
+  position: absolute;
+  right: 0px;
+  top: 36%;
+  height: 2px;
+  width: 20px;
+  background-color: black;
+  transition: all 0.5s ease;
+}
+.plus-minus::before {
+  content: '';
+  position: absolute;
+  right: 9px;
+  top: 0;
+  height: 20px;
+  width: 2px;
+  background-color: black;
+  transition: all 0.5s ease;
+}
+.plus-minus.active::after {
+  transform: rotate(180deg);
+  transform-origin: 50% 50%;
+}
+.plus-minus.active::before {
+  transform: rotate(90deg);
+  transform-origin: 50% 50%;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Microsoft YaHei";
+}
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.card-wrapper {
+  margin-left: 40px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 200px;
+  height: 300px;
+  border: solid 2px #eff0f3;
+  border-radius: 8px;
+}
+.card-wrapper .card-content {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+  font-size: 15px;
+  line-height: 19px;
+  z-index: 3;
+  position: relative;
+  top: 0;
+  left: 0;
+  background: white;
+  padding: 8px;
+  padding-bottom: 0px;
+  background-color: #339966;
+  color: white;
+}
+.card-wrapper .card-content .card-content-close {
+  background-color: rgba(48, 113, 169, 0);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  transition: all 0.5s ease;
+}
+.card-wrapper .card-content .card-content-close:hover {
+  background-color: #3071a9;
+}
+.card-wrapper .card-content .card-content-close:hover::after {
+  display: block;
+}
+.card-wrapper .card-content .card-content-close:hover::before {
+  display: block;
+}
+.card-wrapper .card-content .card-content-close::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  transform: rotate(45deg);
+  background-color: white;
+  display: none;
+  top: 50%;
+  left: 0px;
+}
+.card-wrapper .card-content .card-content-close::before {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  transform: rotate(-45deg);
+  background-color: white;
+  display: none;
+  top: 50%;
+  left: 0px;
+}
+.card-wrapper .card-omission {
+  height: 95px;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card-wrapper .card-scroll {
+  height: 300px;
+  overflow-y: scroll;
+}
+.card-wrapper .card-scroll::-webkit-scrollbar {
+  display: none;
+}
+.card-wrapper .card-extend {
+  position: absolute;
+  top: 95px;
+  width: 100%;
+  margin-top: 8px;
+  border-top: solid 1px #eff0f3;
+  padding: 8px;
+  box-sizing: border-box;
+  background-color: rgba(243, 243, 243, 0.3);
+  height: 198px;
+}
+.card-wrapper .card-row {
+  margin-bottom: 5px;
+  position: relative;
+}
+.card-wrapper .card-row .row-title {
+  width: 40%;
+  display: inline-block;
+  line-height: 25px;
+}
+.card-wrapper .card-row .row-action {
+  position: absolute;
+  right: 0;
+  width: 30px;
+  display: inline-block;
+  line-height: 25px;
+}

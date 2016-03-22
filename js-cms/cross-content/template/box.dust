@@ -1,0 +1,28 @@
+<div class="card-wrapper">
+    <div class="card-content card-omission">
+        {content}
+        <div class="card-content-close"></div>
+    </div>
+    <div class="card-extend">
+        <div class="card-row">
+            <div class="row-title">Type</div>
+            <span>xxxxxx</span>
+        </div>
+        <div class="card-row">
+            <div class="row-title">Time</div>
+            <span>xxxxxx</span>
+        </div>
+        <div class="card-row card-source">
+            <div class="row-title">Source</div>
+            <span>xxxxxx</span>
+        </div>
+        <div class="card-row card-lead">
+            <div class="row-title">Lead</div>
+            <div class="row-action plus-minus ">&nbsp;</div>
+        </div>
+        <div class="card-row card-relate">
+            <div class="row-title">Relate</div>
+            <div class="row-action plus-minus">&nbsp;</div>
+        </div>
+    </div>
+</div>

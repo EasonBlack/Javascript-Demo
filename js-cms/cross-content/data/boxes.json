@@ -1,0 +1,38 @@
+[
+  {
+    "id" : "1",
+    "content" : "aaaa",
+    "leadTo" : "2,3",
+    "relateTo" : "4,5"
+  },
+  {
+    "id" : "2",
+    "content" : "bbbb",
+    "leadTo" : "4,5",
+    "relateTo" : "6"
+  },
+  {
+    "id" : "3",
+    "content" : "cccc",
+    "leadTo" : "",
+    "relateTo" : ""
+  },
+  {
+    "id" : "4",
+    "content" : "dddd",
+    "leadTo" : "",
+    "relateTo" : ""
+  },
+  {
+    "id" : "5",
+    "content" : "eeee",
+    "leadTo" : "",
+    "relateTo" : ""
+  },
+  {
+    "id" : "6",
+    "content" : "ffff",
+    "leadTo" : "",
+    "relateTo" : ""
+  }
+]
