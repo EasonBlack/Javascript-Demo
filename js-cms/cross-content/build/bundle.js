@@ -65,14 +65,14 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var self = {};
+	var width = 200;
+	var height = 300;
+	var step = 10;
 	
 	_jquery2.default.get('data/boxes.json').done(function (data) {
 	    self.source = data;
 	    var _d = data[0];
-	    console.log(data);
-	    (0, _box4.default)(_d, function (err, out) {
-	        (0, _jquery2.default)('#container').append(out);
-	    });
+	    setFirstBox(_d);
 	});
 	
 	(0, _jquery2.default)('#container').on('click', '.plus-minus', function (e) {
@@ -80,7 +80,23 @@
 	});
 	
 	(0, _jquery2.default)('#container').on('click', '.card-lead .plus-minus', function (e) {
-	    alert(1);
+	    var _ids = (0, _jquery2.default)(this).data('ids');
+	    if ((0, _jquery2.default)(this).hasClass('active')) {
+	        var _boxes = getArrayData(_ids);
+	        setPositions((0, _jquery2.default)(this).parents(".card-wrapper"), _boxes, 'y');
+	    } else {
+	        deletePositions((0, _jquery2.default)(this).parents(".card-wrapper"), 'y');
+	    }
+	});
+	
+	(0, _jquery2.default)('#container').on('click', '.card-relate .plus-minus', function (e) {
+	    var _ids = (0, _jquery2.default)(this).data('ids');
+	    if ((0, _jquery2.default)(this).hasClass('active')) {
+	        var _boxes = getArrayData(_ids);
+	        setPositions((0, _jquery2.default)(this).parents(".card-wrapper"), _boxes, 'x');
+	    } else {
+	        deletePositions((0, _jquery2.default)(this).parents(".card-wrapper"), 'x');
+	    }
 	});
 	
 	(0, _jquery2.default)('#container').on('click', '.card-content', function (e) {
@@ -90,9 +106,87 @@
 	});
 	
 	function getArrayData(arr) {
+	    var _arr = ('' + arr).split(',');
 	    return _lodash2.default.filter(self.source, function (d) {
-	        return arr.indexOf(d.id) > -1;
+	        return _arr.indexOf(d.id) > -1;
 	    });
+	}
+	
+	function setFirstBox(d) {
+	    d.position = '1-1';
+	    d.left = 10;
+	    d.top = 10;
+	    (0, _box4.default)(d, function (err, out) {
+	        (0, _jquery2.default)('#container').append(out);
+	    });
+	}
+	
+	function deletePositions(father, direction) {
+	    var _position = (0, _jquery2.default)(father).data('position');
+	    var _top = parseInt((0, _jquery2.default)(father).css('top'));
+	    var _left = parseInt((0, _jquery2.default)(father).css('left'));
+	    var _p_y = _position.split('-')[0];
+	    var _p_x = _position.split('-')[1];
+	    if (direction == 'x') {
+	        for (var i = 1; i <= 10; i++) {
+	            if ((0, _jquery2.default)('.' + _p_y + '-' + (parseInt(_p_x) + i)).length) {
+	                var _target = (0, _jquery2.default)('.' + _p_y + '-' + (parseInt(_p_x) + i));
+	                _target.animate({ top: _top, left: _left }, 1000, function () {
+	                    (0, _jquery2.default)(this).remove();
+	                });
+	            } else {
+	                break;
+	            }
+	        }
+	    } else if (direction == 'y') {
+	        for (var i = 1; i <= 10; i++) {
+	            if ((0, _jquery2.default)('.' + (parseInt(_p_y) + i) + '-' + _p_x).length) {
+	                var _target = (0, _jquery2.default)('.' + (parseInt(_p_y) + i) + '-' + _p_x);
+	                _target.animate({ top: _top, left: _left }, 1000, function () {
+	                    (0, _jquery2.default)(this).remove();
+	                });
+	            } else {
+	                break;
+	            }
+	        }
+	    }
+	}
+	
+	function setPositions(father, boxes, direction) {
+	    var _position = (0, _jquery2.default)(father).data('position');
+	    var _top = parseInt((0, _jquery2.default)(father).css('top'));
+	    var _left = parseInt((0, _jquery2.default)(father).css('left'));
+	    var _p_y = _position.split('-')[0];
+	    var _p_x = _position.split('-')[1];
+	    if (direction == 'x') {
+	        for (var i = 1; i <= 10; i++) {
+	            (0, _jquery2.default)('.' + _p_y + '-' + (parseInt(_p_x) + i)).remove();
+	        }
+	        for (var i = 0; i < boxes.length; i++) {
+	            var _d = boxes[i];
+	            _d.position = _p_y + '-' + (parseInt(_p_x) + i + 1);
+	            _d.left = _left; // + (i + 1) * (width + step);
+	            _d.top = _top;
+	            (0, _box4.default)(_d, function (err, out) {
+	                (0, _jquery2.default)('#container').append(out);
+	                (0, _jquery2.default)('.' + _d.position).animate({ top: _top, left: _left + (i + 1) * (width + step) }, 1000);
+	            });
+	        }
+	    } else if (direction == 'y') {
+	        for (var i = 1; i <= 10; i++) {
+	            (0, _jquery2.default)('.' + (parseInt(_p_y) + i) + '-' + _p_x).remove();
+	        }
+	        for (var i = 0; i < boxes.length; i++) {
+	            var _d = boxes[i];
+	            _d.position = parseInt(_p_y) + i + 1 + '-' + _p_x;
+	            _d.left = _left;
+	            _d.top = _top; // + (i + 1) * (height + step);
+	            (0, _box4.default)(_d, function (err, out) {
+	                (0, _jquery2.default)('#container').append(out);
+	                (0, _jquery2.default)('.' + _d.position).animate({ top: _top + (i + 1) * (height + step), left: _left }, 1000);
+	            });
+	        }
+	    }
 	}
 
 /***/ },
@@ -25086,7 +25180,7 @@
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var dust = __webpack_require__(6); (function(dust){dust.register("template\/box",body_0);function body_0(chk,ctx){return chk.w("<div class=\"card-wrapper\"><div class=\"card-content card-omission\">").f(ctx.get(["content"], false),ctx,"h").w("<div class=\"card-content-close\"></div></div><div class=\"card-extend\"><div class=\"card-row\"><div class=\"row-title\">Type</div><span>xxxxxx</span></div><div class=\"card-row\"><div class=\"row-title\">Time</div><span>xxxxxx</span></div><div class=\"card-row card-source\"><div class=\"row-title\">Source</div><span>xxxxxx</span></div><div class=\"card-row card-lead\"><div class=\"row-title\">Lead</div><div class=\"row-action plus-minus \">&nbsp;</div></div><div class=\"card-row card-relate\"><div class=\"row-title\">Relate</div><div class=\"row-action plus-minus\">&nbsp;</div></div></div></div>");}body_0.__dustBody=!0;return body_0}(dust));var fn = function( context, callback ) { dust.render( 'template/box', context, callback ); }; fn.templateName = "template/box"; module.exports = fn;
+	var dust = __webpack_require__(6); (function(dust){dust.register("template\/box",body_0);function body_0(chk,ctx){return chk.w("<div class=\"card-wrapper ").f(ctx.get(["position"], false),ctx,"h").w("\" style=\"top: ").f(ctx.get(["top"], false),ctx,"h").w("px;left: ").f(ctx.get(["left"], false),ctx,"h").w("px;\" data-position=\"").f(ctx.get(["position"], false),ctx,"h").w("\"><div class=\"card-content card-omission\">").f(ctx.get(["content"], false),ctx,"h").w("<div class=\"card-content-close\"></div></div><div class=\"card-extend\"><div class=\"card-row\"><div class=\"row-title\">Type</div><span>xxxxxx</span></div><div class=\"card-row\"><div class=\"row-title\">Time</div><span>xxxxxx</span></div><div class=\"card-row card-source\"><div class=\"row-title\">Source</div><span>xxxxxx</span></div><div class=\"card-row card-lead\"><div class=\"row-title\">Lead</div><div class=\"row-action plus-minus \"  data-ids=\"").f(ctx.get(["leadTo"], false),ctx,"h").w("\">&nbsp;</div></div><div class=\"card-row card-relate\"><div class=\"row-title\">Relate</div><div class=\"row-action plus-minus\"  data-ids=\"").f(ctx.get(["relateTo"], false),ctx,"h").w("\">&nbsp;</div></div></div></div>");}body_0.__dustBody=!0;return body_0}(dust));var fn = function( context, callback ) { dust.render( 'template/box', context, callback ); }; fn.templateName = "template/box"; module.exports = fn;
 
 /***/ },
 /* 6 */
