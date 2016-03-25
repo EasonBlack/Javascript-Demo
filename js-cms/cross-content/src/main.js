@@ -127,6 +127,4 @@ function setPositions(father, boxes, direction) {
             });
         }
     }
-
-
 }
