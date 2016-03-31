@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border: 1px solid steelblue;
+        }
+
+        .point {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            background-color: #000080;
+            border-radius: 50%;
+        }
+
+        .menu {
+            display: none;
+            width: 100px;
+            height: 30px;
+            border-radius: 5px;
+            border: 1px solid #006600;
+            position: absolute;
+            background-color: white;
+            z-index: 3;
+        }
+
+        .arrow {
+            position: absolute;
+            transform: rotate(45deg);
+            border-top: 1px solid #006600;
+            border-left: 1px solid #006600;
+            background-color: white;
+            width: 10px;
+            height: 10px;
+            display: none;
+            z-index: 5;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id='container'>
+    <div class="point" style="top:40px;left:5px;"></div>
+    <div class="point" style="top:10px;left:50px;"></div>
+    <div class="point" style="top:210px;left:250px;"></div>
+    <div class="point" style="top:300px;left:470px;"></div>
+    <div class="point" style="top:470px;left:470px;"></div>
+    <div class="point" style="top:470px;left:10px;"></div>
+    <div class="menu"></div>
+    <div class="arrow"></div>
+</div>
+</body>
+<script src="../../vendor/jquery-1.11.1.js"></script>
+<script>
+    $('#container').on('click', '.point', function (e) {
+        var x = e.clientX;
+        var y = e.clientY;
+        var ax = x;
+        var ay = y;
+        var $target = $(e.target);
+        var $container = $('#container');
+        var $menu = $('.menu');
+        var $arrow = $('.arrow');
+
+        var _left = $target.offset().left;
+        var _top = $target.offset().top;
+        if (_left < 30) {
+            x = e.clientX - 5;
+            ax = e.clientX;
+        } else if (_left >= 30 && _left < (500 - 70)) {
+            x = e.clientX - 15;
+            ax = e.clientX;
+        } else {
+            x = e.clientX - 80;
+            ax = e.clientX;
+        }
+
+        if (_top > 450) {
+            y = e.clientY - 41;
+            ay = e.clientY - 15;
+            $arrow.css('transform', 'rotate(225deg)')
+        } else {
+            y = e.clientY + 10;
+            ay = e.clientY + 5;
+            $arrow.css('transform', 'rotate(45deg)')
+        }
+
+        $arrow.css({
+            'top': ay,
+            'left': ax,
+            display: 'block'
+        })
+
+        $menu.css({
+            'top': y,
+            'left': x,
+            display: 'block'
+        });
+    })
+</script>
+</html>
