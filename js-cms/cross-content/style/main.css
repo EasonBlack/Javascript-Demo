@@ -132,7 +132,7 @@ html {
   border-top: solid 1px #eff0f3;
   padding: 8px;
   box-sizing: border-box;
-  background-color: rgba(243, 243, 243, 0.3);
+  background-color: #f3f3f3;
   height: 198px;
 }
 .card-wrapper .card-row {

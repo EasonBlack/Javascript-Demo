@@ -67,29 +67,24 @@ function deletePositions(father, direction) {
     var _left = parseInt($(father).css('left'));
     var _p_y = _position.split('-')[0];
     var _p_x = _position.split('-')[1];
-    if (direction == 'x') {
-        for (var i = 1; i <= 10; i++) {
-            if ($('.' + _p_y + '-' + (parseInt(_p_x) + i)).length) {
-                var _target = $('.' + _p_y + '-' + (parseInt(_p_x) + i));
-                _target.animate({top: _top, left: _left}, 1000, function () {
-                    $(this).remove();
-                })
-            } else {
-                break;
-            }
-        }
-    } else if (direction == 'y') {
-        for (var i = 1; i <= 10; i++) {
-            if ($('.' + (parseInt(_p_y) + i) + '-' + _p_x).length) {
-                var _target = $('.' + (parseInt(_p_y) + i) + '-' + _p_x);
-                _target.animate({top: _top, left: _left}, 1000, function () {
-                    $(this).remove();
-                })
-            } else {
-                break;
-            }
+
+    for(var i=1;i<=10;i++) {
+       var _id;
+       direction == 'x' ? _id = '.' + _p_y + '-' + (parseInt(_p_x) + i) :  _id = '.' + (parseInt(_p_y) + i) + '-' + _p_x;
+        if($(_id).length) {
+            deleteBox(_id, _top, _left);
+        } else {
+            break;
         }
     }
+}
+
+function deleteBox(id, top, left) {
+    var _target = $(id);
+    _target.css('z-index', 1);
+    _target.animate({top: top, left: left}, 1000, function () {
+        $(this).remove();
+    })
 }
 
 function setPositions(father, boxes, direction) {
@@ -98,33 +93,36 @@ function setPositions(father, boxes, direction) {
     var _left = parseInt($(father).css('left'));
     var _p_y = _position.split('-')[0];
     var _p_x = _position.split('-')[1];
-    if (direction == 'x') {
-        for (var i = 1; i <= 10; i++) {
-            $('.' + _p_y + '-' + (parseInt(_p_x) + i)).remove();
-        }
-        for (var i = 0; i < boxes.length; i++) {
-            var _d = boxes[i];
+
+    for (var i = 1; i <= 10; i++) {
+        var _id;
+        direction == 'x'? _id ='.' + _p_y + '-' + (parseInt(_p_x) + i) :  '.' + (parseInt(_p_y) + i) + '-' + _p_x;
+        $(_id).remove();
+    }
+    for(var i = 0;i<boxes.length;i++){
+        var _position, __top, __left;
+        var _d = boxes[i];
+        _d.left =  _left;
+        _d.top = _top;
+        if(direction =='x') {
             _d.position = _p_y + '-' + (parseInt(_p_x) + i + 1);
-            _d.left = _left;// + (i + 1) * (width + step);
-            _d.top = _top;
-            boxTemplate(_d, function (err, out) {
-                $('#container').append(out);
-                $('.' + _d.position).animate({top: _top, left: _left + (i + 1) * (width + step)}, 1000)
-            });
-        }
-    } else if (direction == 'y') {
-        for (var i = 1; i <= 10; i++) {
-            $('.' + (parseInt(_p_y) + i) + '-' + _p_x).remove();
-        }
-        for (var i = 0; i < boxes.length; i++) {
-            var _d = boxes[i];
+            __left = _left + (i + 1) * (width + step);
+            __top = _top;
+        } else {    //y
             _d.position = (parseInt(_p_y) + i + 1) + '-' + _p_x;
-            _d.left = _left;
-            _d.top = _top;// + (i + 1) * (height + step);
-            boxTemplate(_d, function (err, out) {
-                $('#container').append(out);
-                $('.' + _d.position).animate({top: _top + (i + 1) * (height + step), left: _left}, 1000)
-            });
+            __left = _left;
+            __top = _top + (i + 1) * (height + step);
         }
+        addBox(_d, __top, __left);
     }
 }
+
+const addBox = (_d, top, left) => {
+    boxTemplate(_d, function (err, out) {
+        var $out = $(out);
+        $out.css('z-index', 1);
+        $('#container').append(out);
+        $('.' + _d.position).animate({top: top, left: left}, 1000)
+    });
+}
+
