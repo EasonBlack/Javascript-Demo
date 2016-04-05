@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+.container {
+  padding-top: 50px;
+  margin-left: 50px;
+}
+.list-wrapper ul {
+  list-style: none;
+  border-left: 2px solid steelblue;
+  padding-left: 10px;
+  position: relative;
+}
+.list-wrapper ul li {
+  display: block;
+  position: relative;
+}
+.list-wrapper ul li::after {
+  box-shadow: 0 0 0 4px #4298c3;
+  position: absolute;
+  background: #313534;
+  border-radius: 50%;
+  height: 8px;
+  width: 8px;
+  content: "";
+  left: -15px;
+  top: 0px;
+}
+.list-wrapper ul li::before {
+  left: -140px;
+  top: 50%;
+  position: absolute;
+  content: attr(data-title);
+  text-align: right;
+  font-weight: 100;
+  font-size: .9em;
+  min-width: 120px;
+}
