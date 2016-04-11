@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../vendor/jquery-1.11.1.js"></script>
+    <script src="jquery.tempgauge.js"></script>
+    <style>
+        .temp {
+            position: absolute;
+            top: 230px;
+            width: 80px;
+            height: 20px;
+            padding: 5px 5px 5px 0;
+            border-radius: 0 10px 10px 0;
+            background: #1591C1;
+            transform: rotate(-90deg);
+            border-spacing: 10px;
+        }
+
+        .temp:after {
+            border-spacing: 10px;
+            content: '';
+            display: block;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            z-index: -1;
+            top: -15px;
+            left: -54px;
+            border: 5px solid #1591C1;
+            border-radius: 50%;
+            background: -moz-linear-gradient(top, #38E0CC 0%, #1ABC9C 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #38E0CC), color-stop(100%, #1ABC9C));
+            background: -webkit-linear-gradient(top, #38E0CC 0%, #1ABC9C 100%);
+            background: -o-linear-gradient(top, #38E0CC 0%, #1ABC9C 100%);
+            background: -ms-linear-gradient(top, #38E0CC 0%, #1ABC9C 100%);
+            background: linear-gradient(to bottom, #38E0CC 0%, #1ABC9C 100%);
+        }
+
+        meter {
+            -webkit-appearance: none;
+        }
+
+        meter::-webkit-meter-bar {
+            background: #FFF;
+            border-radius:5px;
+        }
+
+        meter::-webkit-meter-optimum-value {
+            background: -moz-linear-gradient(top, #38E0CC 0%, #1ABC9C 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #38E0CC), color-stop(100%, #1ABC9C));
+            background: -webkit-linear-gradient(top, #38E0CC 0%, #1ABC9C 100%);
+            background: -o-linear-gradient(top, #38E0CC 0%, #1ABC9C 100%);
+            background: -ms-linear-gradient(top, #38E0CC 0%, #1ABC9C 100%);
+            background: linear-gradient(to bottom, #38E0CC 0%, #1ABC9C 100%);
+        }
+    </style>
+</head>
+<body>
+<div class="tempGauge0">25&deg;C</div>
+<div class="temp">
+    <meter class="degree" style="width: 80px" max="50" low="0" value="15"></meter>
+</div>
+</body>
+<script>
+    $(".tempGauge0").tempGauge({width: 50, borderWidth: 3, showLabel: false});
+</script>
+</html>
