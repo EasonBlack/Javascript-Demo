@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .amPmCheckbox input[type="checkbox"] {
+            display: none;
+        }
+        .amPmCheckbox input[type="checkbox"]+label {
+            background: url('Checkbox_Empty.png') no-repeat;
+            height: 30px;
+            padding-left: 26px;
+            display: block;
+            line-height: 24px;
+            padding-top: 0px;
+        }
+        .amPmCheckbox input[type="checkbox"]:checked + label {
+            background: url('Checkbox_Full.png')  no-repeat;
+        }
+    </style>
+</head>
+<body>
+<div class="amPmCheckbox">
+    <input type="checkbox"  id="test" />
+    <label for="test">TEST</label>
+</div>
+</body>
+</html>
