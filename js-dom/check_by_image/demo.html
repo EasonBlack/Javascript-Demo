@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <title></title>
     <style>
-        .amPmCheckbox input[type="checkbox"] {
+        .c1 input[type="checkbox"] {
             display: none;
         }
-        .amPmCheckbox input[type="checkbox"]+label {
+
+        .c1 input[type="checkbox"] + label {
             background: url('Checkbox_Empty.png') no-repeat;
             height: 30px;
             padding-left: 26px;
@@ -15,15 +16,66 @@
             line-height: 24px;
             padding-top: 0px;
         }
-        .amPmCheckbox input[type="checkbox"]:checked + label {
-            background: url('Checkbox_Full.png')  no-repeat;
+
+        .c1 input[type="checkbox"]:checked + label {
+            background: url('Checkbox_Full.png') no-repeat;
         }
+
+        ul {
+            list-style: none;
+        }
+
+        ul li {
+            display: block;
+            width: 200px;
+            height: 40px;
+        }
+
+        .c2, .c2-label {
+            display: block;
+            float: left;
+        }
+
+        .c2-label {
+            padding-top: 2px;
+        }
+
+        .c2 input[type="checkbox"] {
+            display: none;
+        }
+
+        .c2 input[type="checkbox"] + label {
+            background: url('Checkbox_Empty.png') no-repeat;
+            height: 23px;
+            padding-left: 26px;
+            display: block;
+            line-height: 23px;
+            padding-top: 0px;
+        }
+
+        .c2 input[type="checkbox"]:checked + label {
+            background: url('Checkbox_Full.png') no-repeat;
+        }
+
     </style>
 </head>
 <body>
-<div class="amPmCheckbox">
-    <input type="checkbox"  id="test" />
+<div class="c1">
+    <input type="checkbox" id="test"/>
     <label for="test">TEST</label>
+</div>
+<div>
+    <ul>
+        <li>
+            <div class="c2-label">
+                xxxxx
+            </div>
+            <div class="c2">
+                <input type="checkbox" id="test2"/>
+                <label for="test2"></label>
+            </div>
+        </li>
+    </ul>
 </div>
 </body>
 </html>
