@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../../style/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="../../style/bootstrap-theme.css" type="text/css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 50px;
+        }
+
+        @-moz-keyframes rotating {
+            from {
+                -moz-transform: rotate(0deg);
+            }
+            to {
+                -moz-transform: rotate(360deg);
+            }
+        }
+        @-webkit-keyframes rotating /* Safari and Chrome */ {
+            from {
+                -webkit-transform: rotate(0deg);
+            }
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @-moz-keyframes rotating2 /* Safari and Chrome */ {
+            from {
+                -moz-transform: rotate(360deg);
+            }
+            to {
+                -moz-transform: rotate(0deg);
+            }
+        }
+        @-webkit-keyframes rotating2 /* Safari and Chrome */ {
+            from {
+                -webkit-transform: rotate(360deg);
+            }
+            to {
+                -webkit-transform: rotate(0deg);
+            }
+        }
+
+        .loading-wrapper {
+            position:relative;
+            width:104px;
+            height:104px;
+        }
+        .loading-1 {
+            background: #ccc;
+            width:104px;
+            height:104px;
+            position:absolute;
+            top:0;
+            left:0;
+        }
+
+
+        .loading-2 {
+            width:104px;
+            height:104px;
+            position:absolute;
+            top:0;
+            left:0;
+        }
+
+        .rotating {
+            -webkit-animation: rotating 2s linear infinite;
+            -moz-animation: rotating 2s linear infinite;
+            -ms-animation: rotating 2s linear infinite;
+            -o-animation: rotating 2s linear infinite;
+            animation: rotating 2s linear infinite;
+        }
+
+        .rotating2 {
+            -webkit-animation: rotating2 2s linear infinite;
+            -moz-animation: rotating2 2s linear infinite;
+            -ms-animation: rotating2 2s linear infinite;
+            -o-animation: rotating2 2s linear infinite;
+            animation: rotating2 2s linear infinite;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="loading-wrapper">
+       <div class="img-wrapper loading-1 ">
+           <img src="Loading.png"/>
+       </div>
+       <div class="img-wrapper loading-2 ">
+           <img src="Loading 2.png"/>
+       </div>
+    </div>
+    <button id="btnClick">Click</button>
+</div>
+</body>
+<script src="../../vendor/jquery-1.11.1.js"></script>
+<script>
+  $('#btnClick').click(function(){
+     $('.loading-2').toggleClass('rotating2');
+     $('.loading-1').toggleClass('rotating');
+  })
+</script>
+</html>
