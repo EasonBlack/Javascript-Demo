@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../../vendor/fullcalendar/fullcalendar.css" type="text/css" rel="stylesheet">
+    <style>
+        .container {
+            width:50%;
+            heigth:100%;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id='calendar'></div>
+</div>
+</body>
+<script src="../../vendor/jquery-1.11.1.js"></script>
+<script src="../../vendor/moment.js"></script>
+<script src="../../vendor/fullcalendar/fullcalendar.js"></script>
+<script>
+    $('#calendar').fullCalendar({
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay'
+        },
+        //defaultDate: '2016-04-18',
+        editable: true,
+        eventLimit: true, // allow "more" link when too many events
+        events: [
+            {
+                title: 'All Day Event',
+                start: '2016-04-01'
+            },
+            {
+                title: 'Long Event',
+                start: '2016-04-07',
+                end: '2016-04-10'
+            },
+        ]
+    });
+</script>
+</html>
