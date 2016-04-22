@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../../style/bootstrap-grid-glyphicons.css" type="text/css" rel="stylesheet">
+    <link href="demo.css" type="text/css" rel="stylesheet">
+    <style>
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <ul class="number-wrapper">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</div>
+<div>
+    <button id="btnClick">Click Me</button>
+</div>
+</body>
+<script src="../../vendor/jquery-1.11.1.js"></script>
+<script>
+    var index = 1;
+    $('#btnClick').click(function () {
+        $( "ul li:nth-child("+ index % 5 +")").addClass('active');
+        $( "ul li:nth-child("+ (index-1) % 5 +")").html('').append('<span class="glyphicon glyphicon-ok"></span>');
+        index == 4 && (index = 1)
+        index != 4 && (index ++)
+    });
+</script>
+</html>
