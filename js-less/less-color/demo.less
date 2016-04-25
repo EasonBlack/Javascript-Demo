@@ -1,0 +1,37 @@
+@color: #0982C1;
+
+.box {
+  width:80px;
+  height:200px;
+  margin-bottom:20px;
+}
+
+.box1 {
+  .box;
+  background: darken(@color, 10%);
+}
+
+.box2 {
+  .box;
+  background: darken(@color, 20%);
+}
+
+.box3 {
+  .box;
+  background: darken(@color, 30%);
+}
+
+.box4 {
+  .box;
+  background: lighten(@color, 10%);
+}
+
+.box5 {
+  .box;
+  background: lighten(@color, 20%);
+}
+
+.box6 {
+  .box;
+  background: lighten(@color, 30%);
+}
