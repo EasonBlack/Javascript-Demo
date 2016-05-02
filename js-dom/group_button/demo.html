@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+       .button-group-wrapper {
+           position:relative;
+       }
+
+        .btn {
+            display: inline-block;
+            padding: 5px 10px;
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 1.5;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            border: 1px solid transparent;
+            border-radius: 5px;
+
+            color: #373a3c;
+            background-color: #fff;
+            border-color: #ccc;
+        }
+       .dropdown {
+
+       }
+       .dropdown::after {
+           display: inline-block;
+           width: 0;
+           height: 0;
+           margin-right: 5px;
+           margin-left: 5px;
+           vertical-align: middle;
+           content: "";
+           border-top: .3em solid;
+           border-right: .3em solid transparent;
+           border-left: .3em solid transparent;
+       }
+
+         .subgroup {
+             display:inline-block;
+             position:absolute;
+             left:0;
+             top:100%;
+             border: 1px solid #ccc;
+             border-radius: 3px;
+             margin-top:10px;
+         }
+         .subbtn {
+             display:block;
+             border:none;
+             text-align: left;
+
+             border-bottom:1px solid #ccc;
+             border-radius:0px;
+         }
+         .subbtn:last-child {
+             border-bottom:none;
+         }
+    </style>
+</head>
+<body>
+   <div class="button-group-wrapper" >
+       <a class="btn dropdown"  >Assign</a>
+       <div class="subgroup">
+           <a class="btn subbtn">Assign Task</a>
+           <a class="btn subbtn">Assign Mission</a>
+       </div>
+   </div>
+
+</body>
+</html>
