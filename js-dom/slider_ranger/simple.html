@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../../style/bootstrap.css" type="text/css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 50px;
+        }
+
+        .box {
+            width:200px;
+        }
+
+        input[type=range] {
+            -webkit-appearance: none
+        }
+        input[type=range]:focus {
+            outline: none;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8.4px;
+            cursor: pointer;
+            background: #3071a9;
+            border-radius: 6px;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            border: 3px solid #000000;
+            height: 26px;
+            width: 26px;
+            border-radius: 50%;
+            background: #3071a9;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top:-9px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="box">
+        <input type="range" class="slider" min="100" max="500" step="10" value ="200"/>
+    </div>
+
+</div>
+</body>
+<script src="../../vendor/jquery-1.11.1.js"></script>
+<script src="../../vendor/lodash.js"></script>
+<script>
+
+</script>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../../style/bootstrap.css" type="text/css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 50px;
+        }
+
+        .box {
+            width: 200px;
+        }
+
+        input[type=range] {
+            background: #ccc;
+            -webkit-appearance: none;
+            height:5px;
+        }
+
+        input[type=range]:focus {
+            outline: none;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            border: 3px solid #000000;
+            height: 26px;
+            width: 26px;
+            border-radius: 50%;
+            background: #3071a9;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -2px;
+        }
+
+        /*  firefox */
+        input[type=range]::-moz-range-track {
+            height: 0px;
+            border: none;
+            border-radius: 3px;
+        }
+        input[type=range]::-moz-range-thumb {
+            border: 3px solid #000000;
+            height: 26px;
+            width: 26px;
+            border-radius: 50%;
+            background: #3071a9;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -9px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="box">
+        <input id="slider" type="range" class="slider" min="0" max="100" step="1" value="0" />
+    </div>
+
+</div>
+</body>
+<script src="../../vendor/jquery-1.11.1.js"></script>
+<script>
+    var seekslider = document.getElementById("slider");
+
+    seekslider.addEventListener('input', function () {
+        var v = this.value;
+        seekslider.style.background = "-moz-linear-gradient(left,  #3071a9 0%, #3071a9 " + v + "%, #ccc " + v + "%, #ccc 100%)";
+        seekslider.style.background = "-webkit-gradient(linear, left top, right top, color-stop(0%,#3071a9), color-stop(" + v + "%,#3071a9), color-stop(" + v + "%,#ccc), color-stop(100%,#ccc))";
+        seekslider.style.background = "-webkit-linear-gradient(left,  #3071a9 0%,#3071a9 " + v + "%,#ccc " + v + "%,#ccc 100%)";
+        seekslider.style.background = "-o-linear-gradient(left,  #3071a9 0%,#3071a9 " + v + "%,#ccc " + v + "%,#ccc 100%)";
+        seekslider.style.background = "-ms-linear-gradient(left,  #3071a9 0%,#3071a9 " + v + "%,#ccc " + v + "%,#ccc 100%)";
+        seekslider.style.background = "linear-gradient(to right,  #3071a9 0%,#3071a9 " + v + "%,#ccc " + v + "%,#ccc 100%)";
+    });
+</script>
+</html>
