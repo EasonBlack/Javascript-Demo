@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            width:200px;
+            height:100px;
+            margin:auto auto;
+            transition:all 0.5s linear;
+        }
+        .box1 {
+            margin-top:350px;
+            background: -webkit-linear-gradient(top, #006699, blue);
+        }
+        .box2 {
+            margin-top:0px;
+            background: -webkit-linear-gradient(top, #007799, green);
+        }
+        .box1.fold {
+            margin-top: 280px;
+            transform: perspective(600px) rotateX(-80deg);
+        }
+        .box2.fold {
+            margin-top: -84px;
+            transform: perspective(600px) rotateX(80deg);
+        }
+    </style>
+</head>
+<body>
+
+<div class="box box1"></div>
+<div class="box box2"></div>
+</body>
+<script src="../../vendor/jquery-1.11.1.js"></script>
+<script>
+    $('.box').click(function(){
+        $('.box').toggleClass('fold');
+    })
+</script>
+</html>
