@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body, html, .container {
+            width: 100%;
+
+        }
+
+        .container {
+            display:flex;
+            flex-direction: row;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .left-container {
+            flex:1;
+            width: 50%;
+            border-right: 1px solid #ccc;
+            position: relative;
+        }
+
+        .right-container {
+            flex:1;
+            width: 50%;
+            position: relative;
+        }
+
+        .box {
+            width: 100%;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .box1 {
+            height: 500px;
+        }
+        .box2 {
+            height:400px;
+            border-bottom: none;
+        }
+        .box3 {
+            height:900px;
+        }
+        .box4 {
+            height:200px;
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="left-container">
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+    </div>
+    <div class="right-container">
+        <div class="box box3"></div>
+        <div class="box box4"></div>
+    </div>
+</div>
+</body>
+</html>
