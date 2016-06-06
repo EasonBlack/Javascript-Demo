@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        @keyframes mirror-reflection
+          {
+              0%   {margin-top: 20px;}
+              25%  {margin-top: 15px;}
+              75%  {margin-top: 10px}
+              100% {margin-top: 0px}
+          }
+        @keyframes mirror-reflection-reverse
+        {
+            0%   {margin-top: -20px;}
+            25%  {margin-top: -15px;}
+            75%  {margin-top: -10px}
+            100% {
+                margin-top: 0px;
+                display:none;
+            }
+        }
+
+
+        .container {
+            position:relative;
+            display:block;
+            width:100px;
+            height:30px;
+            margin-left:50px;
+            overflow:hidden;
+        }
+        .box {
+            display: block;
+            position: absolute;
+            padding: 0px 10px;
+            height: 30px;
+            line-height: 45px;
+            vertical-align: bottom;
+            font-size: 20px;
+
+
+        }
+        .front {
+            margin-top:20px;
+            transition: margin-top  0.5s ease;
+        }
+        .reverse {
+            margin-top: -20px;
+            transform: rotateX(180deg);
+            opacity: 1;
+            transition: margin-top  0.5s ease, opacity 0.5s ease 0.3s;
+        }
+        .front.active {
+            margin-top: 0px;
+            /*animation:mirror-reflection 5s ease;*/
+        }
+        .reverse.active {
+            margin-top: 0px;
+            opacity: 0;
+            /*animation:mirror-reflection-reverse 5s ease;*/
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="box front">
+        EASON XU
+    </div>
+</div>
+<div class="container">
+    <div class="box reverse">
+        EASON XU
+    </div>
+</div>
+<a  href='javascript:void(0)' id="bt1">Active</a>
+
+
+</body>
+<script src="../vendor/jquery-1.11.1.js"></script>
+<script>
+    $('#bt1').click(function(){
+        $('.box').toggleClass('active');
+    })
+</script>
+</html>
