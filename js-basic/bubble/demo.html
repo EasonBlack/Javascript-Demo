@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            padding-top: 50px;
+        }
+
+        #container, #container2 {
+            width: 300px;
+            height: 200px;
+            background-color: #ccc;
+        }
+
+        #d1, #d3 {
+            width: 100px;
+            height: 100px;
+            background-color: #00B7FF;
+        }
+
+        #d2, #d4 {
+            width: 50px;
+            height: 40px;
+            background-color: #1ABC9C;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="d1">
+        <div id="d2"></div>
+    </div>
+</div>
+
+<div id="container2">
+    <div id="d3">
+        <div id="d4"></div>
+    </div>
+</div>
+</body>
+<script src="../../vendor/jquery-1.11.1.js"></script>
+
+<script>
+    $(document).on('click', '#d2', function () {
+        console.log('this is d2');
+    })
+    $(document).on('click', '#d1', function () {
+        console.log('this is d1');
+    })
+    $(document).on('click', '#container', function () {
+        console.log('this is container');
+    })
+
+
+    $('#d3').on('click', function () {
+        console.log('this is d3');
+    })
+    $('#d4').on('click', function () {
+        console.log('this is d4');
+    })
+    $('#container2').on('click',  function () {
+        console.log('this is container2');
+    })
+</script>
+</html>
