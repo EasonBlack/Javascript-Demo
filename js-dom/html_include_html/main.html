@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="import" id='view1' href="view1.html">
+</head>
+<body>
+</body>
+<script>
+    var link = document.getElementById('view1');
+    var content = link.import;
+    var el = content.querySelector('.view');
+    document.body.appendChild(el.cloneNode(true));
+</script>
+</html>
