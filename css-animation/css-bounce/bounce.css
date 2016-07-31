@@ -1,0 +1,25 @@
+.animate_test {
+  animation-duration: 0.3s;
+}
+@keyframes bounce_test {
+  100% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+@keyframes bounce_down {
+  100% {
+    transform: translate3d(0, 10px, 0);
+  }
+}
+.bounce_test {
+  -webkit-animation-name: bounce_test;
+  animation-name: bounce_test;
+  -webkit-transform-origin: center bottom;
+  transform-origin: center bottom;
+}
+.bounce_down {
+  -webkit-animation-name: bounce_down;
+  animation-name: bounce_down;
+  -webkit-transform-origin: center bottom;
+  transform-origin: center bottom;
+}

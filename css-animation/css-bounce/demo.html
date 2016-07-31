@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style/animate.css" type="text/css" rel="stylesheet">
+    <link href="main.css" type="text/css" rel="stylesheet">
+    <link href="bounce.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="main__content">
+        Hello World
+    </div>
+    <div class="content top__content">
+    </div>
+    <div class="bottom top__button">Top</div>
+
+    <div class="content bottom__content">
+    </div>
+    <div class="bottom bottom__button">Bottom</div>
+</div>
+</body>
+<script src="../../vendor/jquery-1.11.1.js"></script>
+<script>
+    var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+
+    $('.top__button').click(function () {
+        if($(this).hasClass('active')){
+            $('.top__content').removeClass('active');
+            $('.top__button').removeClass('active bounce_test');
+        } else {
+            $(this).addClass('animate_test bounce_test');
+            $(this).one(animationEnd, function () {
+                $('.top__content').addClass('active');
+                $('.top__button').addClass('active');
+            });
+        }
+    })
+
+    $('.bottom__button').click(function () {
+        if($(this).hasClass('active')){
+            $('.bottom__content').removeClass('active');
+            $('.bottom__button').removeClass('active bounce_down');
+        } else {
+            $(this).addClass('animate_test bounce_down');
+            $(this).one(animationEnd, function () {
+                $('.bottom__content').addClass('active');
+                $('.bottom__button').addClass('active');
+            });
+        }
+
+    })
+</script>
+</html>
