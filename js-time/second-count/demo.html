@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="time_container" style="width:100px;height:30px;"></div>
+<div>
+    <button id="btnStart">Start</button>
+    <button id="btnStop">Stop</button>
+    <button id="btnReset">Reset</button>
+</div>
+</body>
+<script src="../../vendor/jquery-1.11.1.js"></script>
+<script>
+    var time = {
+        h: 0,
+        m: 0,
+        s: 0
+    };
+    var isCounting = false;
+
+    var recodeTime = function (s) {
+        if (s < 10) {
+            return '0' + s;
+        } else {
+            return s;
+        }
+    }
+
+    var showTime= function(){
+        var timeText = recodeTime(time.h) + ":" + recodeTime(time.m) + ":" + recodeTime(time.s);
+        $('#time_container').html(timeText)
+    }
+
+    var checkTime = function () {
+        time.s++;
+        if (time.s >= 60) {
+            time.m++
+            time.s = 0;
+        }
+        if (time.m >= 60) {
+            time.h++;
+            time.m = 0;
+        }
+        showTime();
+    }
+
+
+    var resetTime = function () {
+        time = {
+            h: 0,
+            m: 0,
+            s: 0
+        };
+        showTime();
+    }
+
+    var stopTime = function () {
+        if (isCounting) {
+            isCounting = false;
+            clearTimeout(timeoutId);
+        }
+    }
+
+    var startTime = function () {
+        if (!isCounting) {
+            isCounting = true;
+            timeoutId = setInterval(checkTime, 1000);        //指定时间执行任务
+        }
+    }
+
+    $('#btnStart').click(function () {
+        startTime();
+    })
+    $('#btnStop').click(function () {
+        stopTime();
+    })
+    $('#btnReset').click(function () {
+        resetTime();
+    })
+
+
+</script>
+</html>
