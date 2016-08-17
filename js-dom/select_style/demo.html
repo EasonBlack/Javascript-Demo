@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .wrapper {
+            position: relative;
+        }
+
+        select {
+            position:absolute;
+            top:0;
+            left:0;
+            background: transparent;
+            border: none;
+        }
+
+        select:focus {
+            outline: none;
+        }
+
+        .select_box {
+            opacity:0;
+        }
+
+        .txt_container {
+            position:absolute;
+            top:0;
+            left:0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="wrapper">
+        <div id="txt_container"></div>
+        <select class="select_box">
+            <option value="aaaaa aaaaa aaa">aaaaa aaaaa aaa</option>
+            <option value="bbbb">bbbb</option>
+        </select>
+    </div>
+
+</div>
+</body>
+<script src="../../vendor/jquery-1.11.1.js"></script>
+<script>
+    $('.select_box').on('change', function() {
+        $('#txt_container').html(this.value);
+
+    });
+</script>
+</html>
