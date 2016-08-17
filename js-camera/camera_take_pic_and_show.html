@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title></title>
+    <style>
+        #image_wrapper {
+            width: 400px;
+            height: 420px;
+            overflow: hidden;
+            border:1px solid black;
+        }
+
+        #image_container {
+            display: flex;
+            flex-direction: row;
+            overflow-x:scroll;
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <input type="file" accept="image/*" onchange="loadFile(event)">
+</div>
+<div id="image_wrapper">
+    <div id="image_container"></div>
+</div>
+
+</body>
+<script src="../vendor/jquery-1.11.1.js"></script>
+<script>
+
+    function loadFile(event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var output = new Image();
+            output.width='200';
+            output.height='400';
+            output.src = reader.result;
+            $('#image_container').append(output);
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+
+
+</script>
+</html>
