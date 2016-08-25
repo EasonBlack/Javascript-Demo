@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .wrap {
+            padding:40px;
+        }
+        .container {
+            display:flex;
+            flex-direction: row;
+            flex-wrap:wrap;
+            background-color: #eee;
+        }
+
+        .box {
+            height:300px;
+            border:1px solid steelblue;
+            flex: 1 0 300px;
+            margin-left:10px;
+            margin-top:10px;
+            margin-right:10px;
+        }
+
+        /*80 + 2*300 + 20*/
+        @media (min-width:700px) {
+            .box {
+                max-width: calc(50% - 20px);
+            }
+        }
+        /*80 + 3*300 + 2*20*/
+        @media (min-width: 1020px) {
+            .box {
+                max-width: calc(33.3333% - 20px);
+            }
+        }
+
+        /*80 + 4*300 + 3*20*/
+        @media (min-width: 1340px) {
+            .box {
+                max-width: calc(25% - 20px);
+            }
+        }
+
+        /*80 + 5*300 + 4*20*/
+        @media (min-width: 1660px) {
+            .box {
+                max-width: calc(20% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="container">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+</div>
+
+</body>
+</html>
