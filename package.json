@@ -50,6 +50,7 @@
     "lodash": "^4.6.1",
     "mongoose": "^4.4.11",
     "multer": "^1.1.0",
-    "node-uuid": "^1.4.7"
+    "node-uuid": "^1.4.7",
+    "redux": "^3.6.0"
   }
 }
