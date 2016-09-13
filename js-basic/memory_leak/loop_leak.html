@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="d1">aaaaa</div>
+</body>
+<script>
+    var div = document.getElementById("d1");
+    div.onclick = function () {
+        console.log(this);
+    };
+    //div中的onclick指向匿名函数function
+    //function中会引用到div作用域
+    //形成了循环引用
+</script>
+</html>
