@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul {
+            list-style: none;
+            display:block;
+            perspective: 2060px;
+        }
+
+        li {
+            display: block;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            margin-bottom: 5px;
+            padding-left: 10px;
+            opacity: 0;
+            transform: rotateX(-90deg);
+            transition: all 1s cubic-bezier(.36, -0.64, .34, 1.76);
+        }
+
+        li.show {
+            opacity: 1;
+            transform: none;
+        }
+
+        li:nth-child(even) {
+            background-color: lightcoral;
+        }
+
+        li:nth-child(odd) {
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+<ul id="item_list">
+    <li class='show'>Item 1</li>
+    <li class='show'>Item 2</li>
+    <li class='show'>Item 3</li>
+    <li class='show'>Item 4</li>
+</ul>
+<div>
+    <button id="btnAdd">Add New</button>
+</div>
+</body>
+<script src="../../vendor/jquery-1.11.1.js"></script>
+<script>
+    $('#btnAdd').click(function () {
+        var _item = $('<li>new</li>')
+        $('#item_list').append(_item);
+        setTimeout(function() {
+            _item.addClass('show');
+        }, 10);
+    });
+</script>
+</html>
