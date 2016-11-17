@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="main.css" rel="stylesheet"/>
+</head>
+<body>
+<div id="word-wrapper" class="word-wrapper">
+    <ul>
+        <li>
+            <span class="glyphicon glyphicon-record"></span>
+            <span class="word-item">aaaaaa aaaa a as dfasd asd</span>
+        </li>
+        <li>
+            <span class="glyphicon glyphicon-record"></span>
+            <span class="word-item">bbbbbbbbbbb</span>
+        </li>
+        <li>
+            <span class="glyphicon glyphicon-record"></span>
+            <span class="word-item">ccccccccccc</span>
+        </li>
+    </ul>
+</div>
+<button id="btnMove">Move</button>
+</body>
+<script src="../../vendor/jquery-1.11.1.js"></script>
+<script>
+  $('#btnMove').click(function(){
+     $('.word-wrapper').addClass('active');
+  });
+</script>
+</html>
