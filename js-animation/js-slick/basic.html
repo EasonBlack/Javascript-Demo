@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
+    <style>
+        /* Defines the width of the carousel and centers it on the page */
+        .slick-carousel {
+            margin: 0 auto;
+            width: 1000px;
+        }
+
+        /* The width of each slide */
+        .slick-slide {
+            width: 350px;
+        }
+
+        /* Color of the arrows */
+        .slick-next::before, .slick-prev::before {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+<div class="slick-carousel">
+    <div>
+        <img src="http://placekitten.com/g/320/240">
+    </div>
+    <div>
+        <img src="http://placekitten.com/g/320/240">
+    </div>
+    <div>
+        <img src="http://placekitten.com/g/320/240">
+    </div>
+    <div>
+        <img src="http://placekitten.com/g/320/240">
+    </div>
+    <div>
+        <img src="http://placekitten.com/g/320/240">
+    </div>
+</div>
+</body>
+<!-- jQuery CDN -->
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<!-- slick Carousel CDN -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.7/slick.min.js"></script>
+<script>
+    $('.slick-carousel').slick({
+        infinite: false,
+        slidesToShow: 3, // Shows a three slides at a time
+        slidesToScroll: 1, // When you click an arrow, it scrolls 1 slide at a time
+        arrows: true, // Adds arrows to sides of slider
+        dots: true // Adds the dots on the bottom
+    });
+</script>
+</html>
