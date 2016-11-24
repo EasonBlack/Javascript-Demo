@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            margin: 60px auto;
+            border: 1px solid steelblue;
+        }
+
+        .target {
+            position: absolute;
+            top: 200px;
+            left: 200px;
+            width: 80px;
+            height: 40px;
+            background-color: lightgreen;
+            transition: all .5s ease;
+            transform-origin: 250% -30%;
+        }
+
+        .target.active {
+            animation: circle 0.5s ease forwards;
+        }
+
+        @keyframes circle {
+            0% {
+                transform: rotateY(0deg);
+            }
+            10% {
+                transform: translate(-5px,-20px) rotateY(30deg) scale(0.9);
+            }
+            30% {
+                transform:  translate(-15px,-30px) rotateY(60deg)  scale(0.8);
+            }
+            60% {
+                transform:  translate(-20px,-40px) rotateY(90deg)  scale(0.7);
+            }
+            90% {
+                transform:  translate(-10px,-45px) rotateY(120deg) scale(0.6);
+            }
+            100% {
+                transform:  translate(10px,-50px) rotateY(180deg) scale(0.5);
+            }
+        }
+    </style>
+    <script src="../../vendor/jquery-1.11.1.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="target"></div>
+</div>
+<button id="btnToggle">Toggle</button>
+</body>
+<script>
+    $('#btnToggle').click(function () {
+        var t = $('.target');
+        if (t.hasClass('active')) {
+            $('.target').removeClass('active')
+        } else {
+            $('.target').addClass('active')
+        }
+
+    })
+</script>
+</html>
