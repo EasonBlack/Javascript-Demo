@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            margin: 60px auto;
+            border: 1px solid steelblue;
+            perspective: 200px;
+        }
+
+        .target {
+            position: absolute;
+            top: 200px;
+            left: 200px;
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+            transition: all .5s ease;
+            display: block;
+
+            transform-style: preserve-3d;
+
+        }
+
+        .content {
+            position: relative;
+        }
+
+    </style>
+    <script src="../../vendor/jquery-1.11.1.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="target">
+        <div class="content">Hello</div>
+    </div>
+</div>
+<button id="btnToggle">Toggle</button>
+</body>
+<script>
+    var th = 0;
+    var ox = 200, oz = -50;
+    var newx = 200;
+    var $target = $('.target');
+    var time = setInterval(function () {
+        var r = th * Math.PI / 180;
+        var object = {}
+        object.x = ox + Math.sin(r) * 50
+        object.z = oz + Math.cos(r) * 50   //50 是半径
+        th += 10;
+        console.log(object.x, object.z);
+        $target.css('transform', `translate3d(${object.x - newx}px, 0px, ${object.z}px)`);
+    }, 26);
+
+    $('#btnToggle').click(function () {
+        clearInterval(time)
+    })
+
+
+</script>
+</html>
