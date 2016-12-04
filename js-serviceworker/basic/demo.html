@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="main.css" rel="stylesheet" >
+
+</head>
+<body>
+<div id="target"></div>
+<div>
+    <img src="../../assets/HTML5_Badge.png" />
+</div>
+</body>
+<script src="main.js"></script>
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+                .register('./sw.js')
+                .then(function() { console.log('Service Worker Registered'); });
+    }
+
+</script>
+</html>
