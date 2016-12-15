@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="TEST">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html,body {
+            width:100%;
+            height:100%;
+        }
+
+        #container {
+            width: 100vw;
+            height: 100vh;
+            border: 5px solid steelblue;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+</body>
+<script>
+    var dom = document.getElementById('container');
+    var _width = dom.offsetWidth;
+    var _height = dom.clientHeight;
+    dom.innerHTML = _width + ':' + _height;
+</script>
+</html>
