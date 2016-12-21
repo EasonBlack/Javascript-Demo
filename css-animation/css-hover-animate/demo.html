@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container {
+            padding:20px;
+        }
+        .target {
+            width:100px;
+            height:20px;
+            line-height:20px;
+            text-align: center;
+            position:relative;
+        }
+        .target:after {
+            content:'';
+            position:absolute;
+            bottom:-10px;
+            height:2px;
+            width:100%;
+            background-color:steelblue;
+            left:0;
+            right:0;
+            transition:all 0.5s ease;
+            opacity:0;
+        }
+        .target:hover::after  {
+            bottom:0px;
+            opacity:1;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="target">Target</div>
+</div>
+
+</body>
+</html>
