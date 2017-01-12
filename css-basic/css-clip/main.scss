@@ -30,5 +30,13 @@
   top:60px;
   width:100vw;
   height:200px;
-  background-color:red;
+  clip: rect(40px, 100vw, 300px, 0);
+  overflow:auto;
+
+  .content {
+    position:relative;
+    background-color:transparent;
+
+    width:100vw;
+  }
 }
