@@ -3,37 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <style>
         * {
             padding:0;
             margin:0;
             box-sizing: border-box;
+            border: none;
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
         }
-        body {
+        body,html {
             overflow:hidden;
         }
         body {
             background-color:red;
+
         }
         .main__container {
-
+            position: fixed;
             background-image:url(../../assets/Home_Shopping.jpg);
             background-repeat: no-repeat;
             background-size:cover;
-            position:absolute;
             top:0;
             bottom:0;
             left:0;
             right:0;
-            pointer-events: none;
             overflow:hidden;
+
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        .content__container {
+            margin-top:50px;
+            height:calc(100vh - 150px);
+            overflow:auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .content {
+            color:white;
+        }
+        p {
+            margin-bottom:10px;
         }
     </style>
 </head>
 <body>
-<div class="main__container">
-
+<div class="main__container" id="main__container">
+    <div class="content__container">
+        <div class="content">
+            <p>bbbbbbbbbbb</p>
+            <p>aaaaaaaaaaa</p>
+            <p>bbbbbbbbbbb</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>bbbbbbbbbbb</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>ccccccccccc</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+            <p>aaaaaaaaaaa</p>
+        </div>
+    </div>
 </div>
 </body>
+<script>
+
+</script>
 </html>
