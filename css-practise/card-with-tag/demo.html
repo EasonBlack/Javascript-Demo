@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin:0;
+            padding:0;
+        }
+        body {
+            padding:50px;
+        }
+        .box {
+            width:100px;
+            height:100px;
+            color: white;
+            position:relative;
+        }
+        .box:not(:first-child) {
+            margin-top:-20px;
+        }
+        .box:before {
+            position:absolute;
+            height:20px;
+            width:40px;
+            top:-20px;
+            color: white;
+        }
+        .box1 {
+            background-color:steelblue;
+        }
+        .box1:before {
+            content: 'aaaa';
+            background-color:steelblue;
+        }
+        .box2 {
+            background-color:lightgreen;
+            margin-left:-20px;
+        }
+        .box2:before {
+            content: 'bbbb';
+            background-color:lightgreen;
+            right:0;
+        }
+        .box3 {
+            background-color:orange;
+        }
+        .box3:before {
+            content: 'cccc';
+            background-color:orange;
+        }
+    </style>
+</head>
+<body>
+<div class='box box1'>AAAA</div>
+<div class='box box2'>BBBB</div>
+<div class='box box3'>CCCC</div>
+</body>
+</html>
