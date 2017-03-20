@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var target = {}, handler = {};
+    var proxy = new Proxy(target, handler);
+
+    proxy.cc = 'xxxx';
+    console.log(target.cc);
+
+
+    handler = {
+        get: function (target, key, receiver) {
+            console.log(`getting ${key}!`);
+            return Reflect.get(target, key, receiver);
+        },
+        set: function (target, key, value, receiver) {
+            console.log(`setting ${key}!`);
+            return Reflect.set(target, key, value, receiver);
+        }
+    };
+    var proxy1 = new Proxy(target, handler)
+    console.log(proxy1.cc);
+    proxy1.bb = 'aaaa';
+</script>
+</html>
