@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="../../vendor/jquery-1.11.1.js"></script>
+<script>
+    let promiseArray = [];
+    promiseArray.push(new Promise(function(resolve, reject){
+        $.getJSON('aa.json' , function(o){
+            resolve(o)
+        })
+    }))
+    promiseArray.push(new Promise(function(resolve, reject){
+        $.getJSON('bb.json' , function(o){
+            resolve(o)
+        })
+
+    }))
+    promiseArray.push(new Promise(function(resolve, reject){
+        resolve('xxxx')
+    }))
+
+    Promise.race(promiseArray)
+            .then(function(o) {
+        console.log(o)
+    }).catch(function(e){
+        console.log('final', e)
+    })
+
+
+</script>
+</html>
