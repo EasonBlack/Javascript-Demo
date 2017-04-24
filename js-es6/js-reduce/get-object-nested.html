@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    let o = {
+        a: {
+            b: {
+                c: {
+                    c1: '12',
+                    c2: '22'
+                }
+            }
+        }
+    }
+    let path = ['a', 'b', 'c'];
+    let result = path.reduce(function(o, key){return o[key]}, o)
+
+    console.log(result);
+</script>
