@@ -43,6 +43,7 @@
   "dependencies": {
     "angular": "^1.5.3",
     "angular-route": "^1.5.3",
+    "axios": "^0.16.1",
     "body-parser": "^1.15.0",
     "dustjs-linkedin": "^2.7.2",
     "express": "^4.13.4",
