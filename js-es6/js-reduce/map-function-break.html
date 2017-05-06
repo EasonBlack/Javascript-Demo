@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    const required = s => !!s;
+    const numeric = s => !isNaN(s)
+    const min = (s, n) => (s>n)
+    const arr = [required, numeric, min];
+    const check = (s,n) => {
+        arr.some(a=>{
+            if(!a(s, n)) {
+                console.log('sth wrong with ' + a.name)
+                return true
+            } else {
+                console.log(a.name);
+            }
+        })
+    };
+    check('a', 8)
+</script>
+</html>
