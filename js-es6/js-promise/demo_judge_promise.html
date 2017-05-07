@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="../../vendor/jquery-1.11.1.js"></script>
+<script>
+    let promiseArray = [];
+    let aa =new Promise(function(resolve, reject){
+        $.getJSON('aa.json' , function(o){
+            resolve(o)
+        })
+    });
+    if(aa.then) {
+        console.log('this is a promise');
+    }
+
+</script>
+</html>
