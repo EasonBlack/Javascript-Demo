@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding:0;
+            margin:0;
+            box-sizing: border-box;
+        }
+        body,html {
+           width:100%;
+           height:100%;
+        }
+        .cell {
+            width:200px;
+            height:200px;
+            border: 1px solid steelblue;
+            position:relative;
+        }
+        .box {
+            position:absolute;
+            width:100px;
+            height:100px;
+            background-color: lightgreen;
+            top:50px;
+            left:50px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="cell" id="c1">
+        <div class="box" draggable="true" id="b1"></div>
+    </div>
+    <div  class="cell" id="c2">
+    </div>
+</div>
+</body>
+<script src="../../vendor/jquery-1.11.1.js"></script>
+<script src="../../vendor/lodash.js"></script>
+<script>
+    document.addEventListener('dragstart', function(e){
+        e.dataTransfer.setData("boxid",e.target.id);
+    })
+
+    let cells = document.getElementsByClassName('cell');
+    Array.prototype.forEach.call(cells, function(cell){
+        cell.addEventListener('dragover',function(e){
+             e.preventDefault();
+        });
+        cell.addEventListener('drop',function(e){
+            e.preventDefault();
+            let boxid= e.dataTransfer.getData('boxid');
+            e.target.appendChild(document.getElementById(boxid));
+        })
+    })
+
+
+
+</script>
+</html>
