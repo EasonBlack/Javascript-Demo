@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding:0;
+            margin:0;
+            box-sizing: border-box;
+        }
+        body, html {
+            width:100%;
+            height:100%;
+        }
+        .container {
+            width:100px;
+            height:100px;
+            margin:auto auto;
+            margin-top:100px;
+            /*border: 1px solid steelblue;*/
+            position:relative;
+            overflow:hidden;
+            animation: rotating 8s linear infinite;
+        }
+        .box {
+            position:absolute;
+            display:block;
+            width:50px;
+            height:50px;
+            border: 1px solid white;
+        }
+        .b1 {
+            top:0;
+            left:0;
+            border-bottom: 4px solid red;
+            animation: out1 8s linear infinite;
+        }
+        .b2 {
+            top:0;
+            left:50px;
+            border-left:  4px solid red;
+            animation: out2 8s linear infinite;
+        }
+        .b3 {
+            top:50px;
+            left:0px;
+            width:50px;
+            z-index:10;
+            border-right: 4px solid green;
+            animation: out3 8s linear infinite;
+        }
+        .b4 {
+            top:49px;
+            left: 50px;
+            border-top:  4px solid red;
+            animation: out4 8s linear infinite;
+        }
+        @keyframes rotating {
+             0%   {transform: rotate(45deg);}
+             20%  {transform: rotate(45deg);}
+             25%  {transform: rotate(135deg);}
+             45%  {transform: rotate(135deg);}
+             50%  {transform: rotate(225deg);}
+             70%  {transform: rotate(225deg);}
+             75%  {transform: rotate(315deg);}
+             95%  {transform: rotate(315deg);}
+             100% {transform: rotate(405deg);}
+         }
+        @keyframes out1 {
+            0%   {left:0px}
+            45%  {left:0px}
+            50%  {left:-10px}
+            70%  {left:-10px}
+            75%  {left:0px}
+            100% {left:0px}
+        }
+
+        @keyframes out2 {
+            0%   {top:0px}
+            20%  {top:0px}
+            25%  {top:-10px}
+            45%  {top:-10px}
+            50%  {top:0px}
+            100% {top:0px}
+        }
+
+        @keyframes out3 {
+            0%   {top:50px}
+            70%  {top:50px}
+            75%  {top:60px}
+            90%  {top:60px}
+            95%  {top:60px}
+            100% {top:50px}
+        }
+        @keyframes out4 {
+            0%   {left:60px}
+            20%  {left:60px}
+            25%  {left:50px}
+            100% {left:50px}
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="box b1"></div>
+    <div class="box b2"></div>
+    <div class="box b3"></div>
+    <div class="box b4"></div>
+</div>
+
+</body>
+
+</html>
