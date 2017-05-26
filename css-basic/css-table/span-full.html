@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin:0;
+            padding:0;
+        }
+        table {
+            width:400px;
+            height:300px;   /* table 定高，span height 100% 可以撑足*/
+            border-collapse: collapse;
+        }
+        tr {
+            border: 1px solid steelblue;
+        }
+        td {
+            padding:0;
+            text-align: center;
+            position:relative;
+        }
+        td span {
+            width:100%;
+            height:100%;
+            background-color: #ccc;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+<table   border="0" cellspacing="0" cellpadding="0">
+    <tr >
+        <th >AAA</th>
+    </tr>
+    <tr >
+        <td>
+            <span >aaa</span>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding:0;">
+            <span>bbb</span>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
