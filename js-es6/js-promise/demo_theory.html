@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    const PENDING = 0;
+    const RESOLVED = 1;
+    const REJECTED = 2;
+    function MyPromise(func){
+        let state = PENDING;
+        let value = null;
+        let handles = [];
+        function resolve(newValue){
+            value = newValue;
+            state = RESOLVED;
+            handles.forEach(handle=>{
+               value =  handle(value);
+            });
+        }
+        this.then = function(onFullFill){
+            switch(state){
+                case PENDING:
+                    handles.push(onFullFill);
+                    return this;
+                    break;
+                case 'RESOLVED':
+                    onFullFill();
+                    return this;
+                    break;
+            }
+        }
+        func(resolve);
+    }
+
+    var p = new MyPromise((resolve) => {
+        setTimeout(() => {
+            resolve(20)
+        }, 300)
+    })
+
+    p.then( (msg) => { console.log(msg + ' message');return msg} )
+     .then( data => console.log(data) );
+</script>
+</html>

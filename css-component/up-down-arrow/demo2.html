@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .arrow__wrapper {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #C3BFB8;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .arrow {
+            display: block;
+            width:30%;
+            height:30%;
+            border-bottom:3px solid white;
+            border-right:3px solid white;
+            transition:transform 0.3s ease;
+        }
+        .arrow__wrapper.down  .arrow__direct {
+            transform: rotate(45deg);
+        }
+        .arrow__wrapper.up  .arrow__direct{
+            transform: rotate(225deg);
+        }
+    </style>
+</head>
+<body>
+<div>
+
+    <div class="arrow__wrapper down">
+        <span class="arrow arrow__direct"></span>
+    </div>
+</div>
+</body>
+<script>
+    document.querySelector('.arrow__wrapper').addEventListener('click',function(e){
+          var _dom = e.currentTarget;
+          if(_dom.className.indexOf('up')>-1) {
+              _dom.className = _dom.className.replace('up',' ');
+          } else {
+              _dom.className += ' up';
+          }
+    }, true)
+</script>
+</html>
