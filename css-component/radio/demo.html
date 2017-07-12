@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .radiocomponent {
+            width: 160px;
+        }
+
+        .radiocomponent__label {
+            position:relative;
+            width: 18px;
+            height: 18px;
+            border-radius:50%;
+            border:2px solid  black;
+            display: inline-block;
+            background-color:white;
+            transition:  background-color .3s ease;
+        }
+
+        .radiocomponent__input {
+            display:none;
+        }
+
+        .radiocomponent__label:before {
+            content: '';
+            position:absolute;
+            top:2px;
+            left: 6px;
+            width:5px;
+            height:10px;
+            border-bottom: 1px solid white;
+            border-right: 1px solid white;
+            transition:transform 0.3s ease;
+            transform: rotate(45deg) scale(0);
+        }
+        .radiocomponent__input:checked  + .radiocomponent__label {
+            background-color: steelblue;
+        }
+        .radiocomponent__input:checked  + .radiocomponent__label:before {
+            transform: rotate(45deg) scale(1);
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div class="radiocomponent">
+        <input id="radio1" class='radiocomponent__input' type="radio"  name="g1"/>
+        <label  for="radio1" class="radiocomponent__label" />
+    </div>
+    <div class="radiocomponent">
+        <input id="radio2" class='radiocomponent__input' type="radio"  name="g1"/>
+        <label  for="radio2" class="radiocomponent__label" />
+    </div>
+
+
+</div>
+</body>
+</html>
