@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrapper {
+            display:grid;
+            grid-template-columns: 2fr 1fr 3fr 2fr;
+            grid-column-gap: 5px;
+            grid-row-gap: 10px;
+        }
+        .wrapper h1 {
+            grid-column: 2/ span 2;
+            grid-row:span 3;
+            justify-self:center;
+            align-self: center;
+        }
+        .wrapper label {
+            grid-column: 2/3;
+        }
+        .wrapper div {
+            grid-column:3/4;
+        }
+        input {
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+    <div class='wrapper'>
+        <h1>Form</h1>
+        <label>Name:</label>
+        <div><input /></div>
+        <label>Age:</label>
+        <div><input /></div>
+    </div>
+</body>
+</html>
