@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+    <style>
+      span {
+        display:inline-block;
+        margin-right:20px;
+        border-bottom:1px solid steelblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <span class='span1'>should be deleted</span>
+      <span class='span1'>only delete the first</span>
+      <button id='btnDeleteDom'>Delete</button>
+   </div>
+   <div>
+      <span class='span2'>Sth will prepend this one</span>
+      <span class='span2_1'>AAA</span>
+      <span class='span2_2'>BBB</span>
+      <button id='btnDeletePrepend'>Prepend&Before</button>
+   </div>
+   <div class='3s'>
+     <span class='span3'>AAA</span>
+     <span class='span3_1'>Should replace another one</span>
+     <button id='btnReplaceWith'>ReplaceWith</button>
+   </div>
+   <div>
+      <div style='background-color:red;width:30px;height:30px;' class='animate-me'></div>
+      <button id='btnAnimate'>Animate</button>
+   </div>
+   <div>
+      <button id='btnFetch'>Fetch</button>
+   </div>
+   <div>
+     <div style='
+     background-color:green;width:30px;height:30px;
+     display:none;
+     opacity: 0;
+     transition: opacity 1s;' class='fade-me'></div>
+     <button id='btnFadeIn'>FadeIn</button>
+   </div>
+  </body>
+  <script>
+    var btnFadeIn = document.querySelector('#btnFadeIn');
+    btnFadeIn.addEventListener('click', ()=>{
+      var elemFade = document.querySelector('.fade-me');
+       elemFade.style.display = "block";
+       setTimeout(() => elemFade.style.opacity = 1, 0);
+    });
+
+    var buttonFetch = document.querySelector('#btnFetch');
+    buttonFetch.addEventListener('click', ()=>{
+      fetch('https://api.github.com/users/easonblack/repos')
+      .then(response=>response.json())
+      .then(data => {console.log(data)})
+    })
+
+    var buttonAnimate = document.querySelector("#btnAnimate");
+    buttonAnimate.addEventListener("click", ()=>{
+      var elemAn = document.querySelector('.animate-me');
+      elemAn.animate([
+        {
+          transform: 'translateY(-1000px) scaleY(2.5) scaleX(.2)',
+          transformOrigin: '50% 0',
+          filter: 'blur(40px)',
+          opacity: 0
+        },
+        {
+          transform: 'translateY(0) scaleY(1) scaleX(1)',
+          transformOrigin: '50% 50%',
+          filter: 'blur(0)',
+          opacity: 1
+        }
+      ], 1000);
+    });
+    var button1 = document.querySelector("#btnDeleteDom");
+    button1.addEventListener("click", ()=>{
+      var elem = document.querySelector(".span1"); //select the element
+      elem.remove() //remove the element
+    });
+
+    var button2 = document.querySelector("#btnDeletePrepend");
+    button2.addEventListener("click", ()=>{
+      var elem2 = document.querySelector(".span2");
+      var elem2_1 = document.querySelector(".span2_1");
+      var elem2_2 = document.querySelector(".span2_2");
+      elem2.before(elem2_1);
+      elem2.prepend(elem2_2);
+    });
+
+    var button3 = document.querySelector("#btnReplaceWith");
+    button3.addEventListener("click", ()=>{
+      var elem3 = document.querySelector(".span3");
+      var elem3_1 = document.querySelector(".span3_1");
+      elem3.replaceWith(elem3_1);
+      console.log(elem3_1.closest('div'));  //获得离元素最近的相关元素
+    });
+  </script>
+</html>
