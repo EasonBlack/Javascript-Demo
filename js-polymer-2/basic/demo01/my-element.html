@@ -1,0 +1,23 @@
+
+
+<dom-module id="my-element">
+    <template>
+        <style>
+            .box{
+                color: grey;
+            }
+        </style>
+        <div class="box">{{mybinding}}</div>
+    </template>
+    <script>
+        Polymer({
+            is: "my-element",
+            properties: {
+                mybinding: {
+                    type: String,
+                    value: "My text here"
+                }
+            }
+        });
+    </script>
+</dom-module>

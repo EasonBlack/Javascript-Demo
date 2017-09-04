@@ -11,6 +11,7 @@
     "iron-elements": "polymerelements/iron-elements#^1.0.10",
     "polymer": "^2.0.2",
     "webcomponentsjs": "^1.0.10",
-    "iron-input": "^2.0.1"
+    "iron-input": "^2.0.1",
+    "px-simple-horizontal-bar-chart": "^1.0.2"
   }
 }
