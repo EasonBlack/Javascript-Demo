@@ -1,4 +1,4 @@
-
+<link rel="import" href="../../../bower_components/iron-ajax/iron-ajax.html">
 
 <dom-module id="my-element">
     <template>
@@ -6,8 +6,16 @@
             .box{
                 color: grey;
             }
+
+            .bgg  {
+                background-color:yellow;
+            }
         </style>
-        <div class="box">{{mybinding}}</div>
+        <div class="box" id="box1">{{mybinding}}</div>
+        <button on-tap="_fetchData">Fetch</button>
+        <button on-tap="_toggleHighlight">HighLight</button>
+        <button on-tap="_toggleFlag">SomeFlag</button>
+        <iron-ajax id="tsAjaxEl" content-type="application/json" url='data.json' method="GET"></iron-ajax>
     </template>
     <script>
         Polymer({
@@ -16,7 +24,34 @@
                 mybinding: {
                     type: String,
                     value: "My text here"
+                },
+                highlight: {
+                    observer: '_highlightChanged'
+                },
+                someflag:{
+                    type: Boolean,
+                    value: false
                 }
+            },
+            ready: function () {
+                this.$.tsAjaxEl.addEventListener('response', function (evt) {
+                    console.log('ts data', evt.detail.response);
+                }.bind(this));
+            },
+            observers: [
+                '_highlightChanged(someflag)'
+            ],
+            _highlightChanged:function(nv, ov){
+                this.$.box1.classList.toggle('bgg');
+            },
+            _toggleHighlight:function() {
+                this.highlight = !this.highlight;
+            },
+            _toggleFlag:function(){
+                this.someflag = !this.someflag;
+            },
+            _fetchData:function() {
+                this.$.tsAjaxEl.generateRequest();
             }
         });
     </script>
