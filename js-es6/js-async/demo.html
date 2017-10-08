@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="../../vendor/axios.min.js"></script>
+<script>
+    async function test() {
+        let res1 = await axios.get('aa.json');
+        let res2 = await axios.get('bb.json');
+        console.log(res1);
+        console.log(res2);
+        return 'aaa'
+    }
+
+    test().then(res=>{
+        console.log(res);
+    })
+
+</script>
+</html>
