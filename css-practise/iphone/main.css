@@ -1,0 +1,222 @@
+* {
+  margin:0;
+  padding:0;
+  position:relative;
+  box-sizing: border-box;
+}
+
+:root {
+  --buttonHeight: 50px;
+}
+
+body, html {
+  width:100%;
+  height:100%;
+  background-color: #9d3979;
+}
+
+.container {
+  width:100%;
+  height:100%;
+  display:flex; 
+  padding-top: 10vh;
+}
+
+
+.marvel-device.iphone6plus {
+  width: 260px;
+  height: 440px;
+  padding: 85px 17px;
+  background: #d9dbdc;
+  -webkit-border-radius: 56px;
+  border-radius: 56px;
+  -webkit-box-shadow: inset 0 0 3px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.marvel-device {
+  display: inline-block;
+  position: relative;
+  box-sizing: content-box !important;
+}
+
+.marvel-device {
+  transform: scale(0.85);
+  transform-origin: 50% 0%;
+}
+
+.marvel-device.iphone6plus:before {
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  position: absolute;
+  top: 6px;
+  content: '';
+  left: 6px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  background: #f8f8f8;
+  z-index: 1;
+}
+
+.marvel-device.iphone6plus:after {
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
+  position: absolute;
+  top: 8px;
+  content: '';
+  left: 8px;
+  -webkit-border-radius: 48px;
+  border-radius: 48px;
+  -webkit-box-shadow: inset 0 0 3px 0 rgba(0, 0, 0, 0.1), inset 0 0 6px 3px #fff;
+  box-shadow: inset 0 0 3px 0 rgba(0, 0, 0, 0.1), inset 0 0 6px 3px #fff;
+  z-index: 2;
+}
+
+.marvel-device.iphone6plus .top-bar {
+  height: 14px;
+  background: #bfbfc0;
+  position: absolute;
+  top: 68px;
+  left: 0;
+}
+
+.marvel-device .top-bar, .marvel-device .bottom-bar {
+  height: 3px;
+  background: black;
+  width: 100%;
+  display: block;
+}
+
+.marvel-device.iphone6plus .sleep {
+  position: absolute;
+  top: 140px;
+  right: -4px;
+  width: 4px;
+  height: var(--buttonHeight);
+  -webkit-border-radius: 0px 2px 2px 0px;
+  border-radius: 0px 2px 2px 0px;
+  background: #d9dbdc;
+}
+
+.marvel-device.iphone6plus .volume {
+  position: absolute;
+  left: -4px;
+  top: 175px;
+  z-index: 0;
+  height: var(--buttonHeight);
+  width: 4px;
+  -webkit-border-radius: 2px 0px 0px 2px;
+  border-radius: 2px 0px 0px 2px;
+  background: #d9dbdc;
+}
+
+.marvel-device.iphone6plus .volume:before {
+  position: absolute;
+  left: 2px;
+  top: -78px;
+  height: 30px;
+  width: 2px;
+  -webkit-border-radius: 2px 0px 0px 2px;
+  border-radius: 2px 0px 0px 2px;
+  background: inherit;
+  content: '';
+  display: block;
+}
+
+.marvel-device.iphone6plus .volume:after {
+  position: absolute;
+  left: 0px;
+  top: 82px;
+  height: var(--buttonHeight);
+  width: 4px;
+  -webkit-border-radius: 2px 0px 0px 2px;
+  border-radius: 2px 0px 0px 2px;
+  background: inherit;
+  content: '';
+  display: block;
+}
+
+.marvel-device.iphone6plus .camera {
+  background: #3c3d3d;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  top: 29px;
+  left: 50%;
+  margin-left: -6px;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  z-index: 3;
+}
+
+.marvel-device.iphone6plus .sensor {
+  background: #3c3d3d;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 54px;
+  left: 84px;
+  z-index: 3;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+}
+
+.marvel-device.iphone6plus .speaker {
+  background: #292728;
+  width: 70px;
+  height: 6px;
+  position: absolute;
+  top: 59px;
+  left: 50%;
+  margin-left: -35px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  z-index: 3;
+}
+
+.marvel-device .screen {
+  width: 100%;
+  position: relative;
+  height: 100%;
+  color: white;
+  z-index: 3;
+  text-align: center;
+  display: block;
+  -webkit-border-radius: 1px;
+  border-radius: 1px;
+  -webkit-box-shadow: 0 0 0 3px #111;
+  box-shadow: 0 0 0 3px #111;
+}
+
+.marvel-device.iphone6plus .home {
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  width: 58px;
+  height: 58px;
+  position: absolute;
+  left: 50%;
+  margin-left: -29px;
+  bottom: 18px;
+  z-index: 3;
+  background: linear-gradient(135deg, #303233 0%, #b5b7b9 50%, #f0f2f2 69%, #303233 100%);
+}
+
+.marvel-device.iphone6plus .home:before {
+  background: #f8f8f8;
+  position: absolute;
+  content: '';
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
+  top: 4px;
+  left: 4px;
+}
+
+.marvel-device.iphone6plus .bottom-bar {
+  height: 14px;
+  background: #bfbfc0;
+  position: absolute;
+  bottom: 68px;
+  left: 0;
+}
