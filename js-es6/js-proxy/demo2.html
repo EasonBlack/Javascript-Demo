@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+ function _proxy(data) {
+      const that = this;
+      Object.keys(data).forEach(key => {
+          Object.defineProperty(that, key, {
+              configurable: true,
+              enumerable: true,
+              get: function proxyGetter () {
+                  return that.data[key];
+              },
+              set: function proxySetter (val) {
+                  that.data[key] = val;
+              }
+          })
+      });
+  }
+  class Foo {
+    constructor(options) {
+      this.data = options.data;    
+      _proxy.call(this, options.data);
+    }  
+  }
+
+  let v = new Foo({
+    data: {
+      a: 1,
+      b: 2
+    }
+  })
+
+  console.log(v.b);
+
+</script>
+
+</html>

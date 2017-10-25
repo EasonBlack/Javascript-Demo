@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+
+
+  class Foo {
+    constructor(options) {
+      this.data = options.data;
+      console.log(this)
+    }
+  }
+  let v = new Foo({
+    data: {
+      a: 1,
+      b: 2
+    }
+  })
+
+  let x = new Proxy(v, {
+    get(target, key, receiver) {
+      if(!target.key) {
+        return target.data[key]
+      }
+    }
+  })
+  console.log(v.b);
+
+</script>
+
+</html>
