@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .model1 {
+            --mwidth: 100px;
+            --color: red;
+        }
+        .model2 {
+            --mwidth: 200px;
+            --color: green;
+        }
+        .box1 {
+            background-color: steelblue;
+            width: calc(2 * var(--mwidth));
+            color: var(--color, green);
+            height:100px;
+        }
+
+    </style>
+</head>
+<body class="model1">
+<div class="box1">
+    aaaaa
+</div>
+<button  id="btnChange">Change</button>
+</body>
+<script>
+    let _btn = document.querySelector('#btnChange');
+    _btn.addEventListener('click',() => {
+        document.body.classList.toggle('model2');
+    })
+</script>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        :root {
+            --mwidth: 100px;
+            --color: red;
+        }
+        .box1 {
+            background-color: steelblue;
+            width: calc(2 * var(--mwidth));
+            color: var(--color, green);
+            height:100px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box1">
+    aaaaa
+</div>
+<button  id="btnChange">Change</button>
+</body>
+<script>
+    let _btn = document.querySelector('#btnChange');
+    _btn.addEventListener('click',() => {
+        let _color = window.getComputedStyle(document.body).getPropertyValue("--color");
+        _color = _color == 'green' ? 'red': 'green';
+        document.body.style.setProperty("--color", _color);
+    })
+</script>
+</html>
