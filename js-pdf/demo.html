@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../vendor/jquery-1.11.1.js"></script>
+    <style>
+    
+    </style>
+</head>
+<body>
+<div id='container'>
+    <button id='btnPdf'>View As PDF</button>
+</div>
+</body>
+
+<script>
+    $('#btnPdf').click(function(e) {
+        let popupWin = window.open('', 'winname','directories=0,titlebar=0,toolbar=0,location=0,status=0,menubar=0,scrollbars=no,resizable=no, width=400,height=auto');
+        popupWin.document.open();
+        popupWin.document.write("<html>" +
+                "<head>" +
+                    "<link rel='stylesheet' href='assets/css/bootstrap.min.css' />" +
+                    "<link rel='stylesheet' type='text/css' href='assets/css/style.css' media='print' />" +
+                    "<style> #print-content{margin-top:150px;} .print-hidden{display:none;} .print-div{height:700px !important;padding-bottom:50px !important;} .bill-popup-container{height: auto} </style>"+
+                "</head>" +
+                "<body onload='window.print()'>" +
+                "<div class='col-md-8 col-md-offset-2'style='margin-top:50px;'>" +
+                        "aaaaaa" +
+                "</div>" +  
+                "</body>" +
+                "</html>");
+        popupWin.document.close();
+    })
+</script>
+</html>
