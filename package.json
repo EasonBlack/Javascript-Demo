@@ -36,6 +36,7 @@
     "mocha": "^2.5.3",
     "raw-loader": "^0.5.1",
     "style-loader": "^0.13.0",
+    "vscode": "^1.1.10",
     "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0"
