@@ -12,7 +12,7 @@
     ],
     "activationEvents": [
         "onCommand:extension.sayHello",
-        "onCommand:extension.wordtest"
+        "onCommand:extension.copytag"
     ],
     "main": "./extension",
     "contributes": {
@@ -22,7 +22,7 @@
         }],
         "keybindings": [{
             "key": "ctrl+q",
-            "command": "extension.wordtest",
+            "command": "extension.copytag",
             "when": ""
         }]
     },
