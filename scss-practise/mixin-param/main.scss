@@ -1,0 +1,20 @@
+@mixin modulify($selection-modifier) {
+    $self: &;
+    &\(#{$selection-modifier}\) {
+      @content;
+      @extend #{$self};
+    }
+}
+
+.component {
+    height: 100px;
+    width: 100px;
+  
+    @include modulify('red') {
+      background: red;
+    }
+  
+    @include modulify('blue') {
+      background: blue;
+    }
+  }

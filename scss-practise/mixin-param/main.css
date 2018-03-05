@@ -1,0 +1,9 @@
+.component, .component\(red\), .component\(blue\) {
+  height: 100px;
+  width: 100px; }
+  .component\(red\) {
+    background: red; }
+  .component\(blue\) {
+    background: blue; }
+
+/*# sourceMappingURL=main.css.map */

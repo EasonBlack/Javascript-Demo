@@ -1,0 +1,19 @@
+.component {
+  background-color: steelblue;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .component__child {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: lightgreen; }
+  .component--big {
+    width: 150px;
+    height: 150px; }
+    .component--big .component__child {
+      background-color: lightcoral; }
+
+/*# sourceMappingURL=main.css.map */
