@@ -1,0 +1,36 @@
+{
+  "vue": {
+    "prefix": "vue file",
+    "body": [
+        "<template>",
+        "\t<div>",
+        "\t</div>",
+        "</template>",
+        "",
+        "<script>",
+        "\texport default {",
+        "\t",
+        "\t}",
+        "</script>",
+        "",
+        "<style lang='scss' scoped>",
+        "\t",
+        "</style>"
+    ],
+    "description": "vue file"
+  }, 
+
+  "vue-script": {
+    "prefix": "vueScript",
+    "body": [
+      "components:{}",
+      "data() {",
+      "\treturn {}",
+      "},",
+      "created() {},",
+      "methods: {},",
+      "computed: {}"
+    ],
+    "description": "vue script"
+  }
+}
