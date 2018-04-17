@@ -1,0 +1,30 @@
+{
+    "name": "copycontent",
+    "displayName": "copycontent",
+    "description": "test",
+    "version": "0.0.1",
+    "publisher": "copycontent",
+    "engines": {
+        "vscode": "^1.20.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.copycontentinside"
+    ],
+    "main": "./extension",
+    "contributes": {
+        "keybindings": [{
+            "key": "shift+w",
+            "command": "extension.copycontentinside",
+            "when": ""
+        }]
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "devDependencies": {
+        "vscode": "^1.1.6"
+    }
+}
