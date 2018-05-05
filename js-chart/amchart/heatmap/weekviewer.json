@@ -1,0 +1,14 @@
+[
+    {"hour": "1am", "Sun": 242, "Mon": 250, "Tue": 132, "Web": 279, "Thu": 283},
+    {"hour": "2am", "Sun": 242, "Mon": 250, "Tue": 232, "Web": 279, "Thu": 283},
+    {"hour": "3am", "Sun": 242, "Mon": 250, "Tue": 232, "Web": 279, "Thu": 283},
+    {"hour": "4am", "Sun": 242, "Mon": 250, "Tue": 232, "Web": 279, "Thu": 283},
+    {"hour": "5am", "Sun": 242, "Mon": 250, "Tue": 232, "Web": 279, "Thu": 283},
+    {"hour": "6am", "Sun": 242, "Mon": 250, "Tue": 232, "Web": 279, "Thu": 283},
+    {"hour": "7am", "Sun": 242, "Mon": 250, "Tue": 232, "Web": 279, "Thu": 283},
+    {"hour": "8am", "Sun": 242, "Mon": 250, "Tue": 232, "Web": 279, "Thu": 283},
+    {"hour": "9am", "Sun": 242, "Mon": 250, "Tue": 232, "Web": 279, "Thu": 283},
+    {"hour": "10am", "Sun": 242, "Mon": 250, "Tue": 232, "Web": 279, "Thu": 283},
+    {"hour": "11am", "Sun": 242, "Mon": 250, "Tue": 232, "Web": 279, "Thu": 283},
+    {"hour": "12am", "Sun": 242, "Mon": 250, "Tue": 232, "Web": 279, "Thu": 283}
+]

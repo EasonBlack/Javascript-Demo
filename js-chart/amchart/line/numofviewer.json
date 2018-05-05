@@ -1,0 +1,19 @@
+[
+    {"num": 1, "total": 58, "pit": 51},
+    {"num": 2, "total": 123, "pit": 98},
+    {"num": 3, "total": 234, "pit": 129},
+    {"num": 5, "total": 98, "pit": 34},
+    {"num": 8, "total": 78, "pit": 70},
+    {"num": 9, "total": 121, "pit": 30},
+    {"num": 10, "total": 45, "pit": 32},
+    {"num": 11, "total": 182, "pit": 177},
+    {"num": 12, "total": 221, "pit": 200},
+    {"num": 13, "total": 300, "pit": 238},
+    {"num": 14, "total": 312, "pit": 40},
+    {"num": 15, "total": 187, "pit": 80},
+    {"num": 16, "total": 182, "pit": 47},
+    {"num": 21, "total": 38, "pit": 22},
+    {"num": 22, "total": 98, "pit": 27},
+    {"num": 23, "total": 183, "pit": 147},
+    {"num": 123, "total": 83, "pit": 47}
+]

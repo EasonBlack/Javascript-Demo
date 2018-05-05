@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+    <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+    <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+    <script src="//www.amcharts.com/lib/4/core.js"></script>
+    <script src="//www.amcharts.com/lib/4/charts.js"></script>
+    <script src="//www.amcharts.com/lib/4/themes/animated.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <style>
+        body {
+            font-family: "Archivo Narrow";
+            height: 98vh;
+            font-size: 0.8em;
+        }
+
+        #chartdiv {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="chartdiv"></div>
+</body>
+<script>
+
+    var URL_PATH = 'numofviewer.json';
+
+    function processData(data) {
+     
+       var result = [];
+       var _min = data[0].num;
+       var current = _min;
+       data.forEach(d=>{
+           if(d.num == current) {
+               result.push(d);
+               current++;
+           } else {
+               let range = d.num - current;
+               for(var i =0;i<range;i++) {
+                   result.push({num: current + i  , total: 0, pit: 0 })
+               }
+               result.push(d);
+               current = d.num + 1;
+           }
+           
+       })
+       console.log(result);
+       return result;
+    }
+
+    function createChart(lineData) {
+
+        var chart = AmCharts.makeChart("chartdiv", {
+            "theme": "light",
+            "type": "serial",
+            "marginRight": 80,
+            "autoMarginOffset": 20,
+            "marginTop": 20,
+            "dataProvider": lineData,
+            "valueAxes": [{
+                "id": "v1",
+                "axisAlpha": 0.1
+            }],
+            "graphs": [{
+                    "useNegativeColorIfDown": true,
+                    "balloonText": "<b>num: [[category]]</b><br><b>total: [[value]]</b>",
+                    "bullet": "round",
+                    "bulletBorderAlpha": 1,
+                    "bulletBorderColor": "#FFFFFF",
+                    "hideBulletsCount": 50,
+                    "lineThickness": 2,
+                    "lineColor": "#fdd400",
+                    "negativeLineColor": "#67b7dc",
+                    "valueField": "total"
+                },{
+                    "useNegativeColorIfDown": true,
+                    "balloonText": "<b>pit: [[value]]</b>",
+                    "bullet": "round",
+                    "bulletBorderAlpha": 1,
+                    "bulletBorderColor": "#FFFFFF",
+                    "hideBulletsCount": 50,
+                    "lineThickness": 2,
+                    "lineColor": "#fdd400",
+                    "negativeLineColor": "#67b7dc",
+                    "valueField": "pit"
+                }
+        
+            ],
+            "chartScrollbar": {
+                "scrollbarHeight": 5,
+                "backgroundAlpha": 0.1,
+                "backgroundColor": "#868686",
+                "selectedBackgroundColor": "#67b7dc",
+                "selectedBackgroundAlpha": 1
+            },
+            "chartCursor": {
+                "valueLineEnabled": true,
+                "valueLineBalloonEnabled": true
+            },
+            "categoryField": "num",
+            "categoryAxis": {
+                //"parseDates": true,
+                "axisAlpha": 0,
+                "minHorizontalGap": 60,
+                startOnAxis: false
+            },
+            "export": {
+                "enabled": true
+            },
+           
+        } );
+
+
+    }
+
+    $.get(URL_PATH, (res) => {
+        console.log(res);
+        var lineData = processData(res)
+        createChart(lineData);
+    })
+
+
+// create chart
+
+
+</script>
+
+</html>
