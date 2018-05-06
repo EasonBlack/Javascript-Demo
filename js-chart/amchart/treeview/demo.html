@@ -43,7 +43,7 @@
             }
             
         })
-        console.log(treeData);
+      
         return treeData;
     }
 
@@ -66,6 +66,12 @@
         // by default only current level series bullets are visible, but as we need brand bullets to be visible all the time, we modify it's hidden state
         level0SeriesTemplate.bulletsContainer.hiddenState.properties.opacity = 1;
         level0SeriesTemplate.bulletsContainer.hiddenState.properties.visible = true;
+
+        chart.colors.list = [ 
+            am4core.color("#8F0D0D"),  am4core.color("blue"), am4core.color("yellow"),
+        ]
+    
+
         // create hover state
         var hoverState = level0SeriesTemplate.columns.template.states.create("hover");
 
@@ -100,7 +106,7 @@
         );
         bullet1.locationX = 0.5;
         bullet1.locationY = 0.5;
-        bullet1.label.text = "{name}";
+        bullet1.label.text = "{name}(PIT:{pit})";
         bullet1.label.fill = am4core.color("#ffffff");
 
         level1SeriesTemplate.columns.template.fillOpacity = 0;

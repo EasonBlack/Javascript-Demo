@@ -52,6 +52,8 @@
     }
 
     function createChart(heatData) {
+        
+        var MaxColor = '#692155';
 
         am4core.useTheme(am4themes_animated);
 
@@ -66,10 +68,20 @@
 
         xAxis.renderer.grid.template.disabled = true;
         xAxis.renderer.minGridDistance = 40;
+        xAxis.renderer.labels.template.valign='bottom';
+        console.log(xAxis.renderer)
+        console.log(xAxis.renderer.labels.template)
 
         yAxis.renderer.grid.template.disabled = true;
+        yAxis.renderer.labels.template.align = 'left'
+      
+        yAxis.renderer.labels.template.dx = -20;
         yAxis.renderer.inversed = true;
         yAxis.renderer.minGridDistance = 30;
+        //yAxis.renderer.align = 'right';
+        console.log( yAxis.renderer.labels.template)
+        console.log(yAxis.renderer)
+        console.log(yAxis)
 
         var series = chart.series.push(new am4charts.ColumnSeries());
         series.dataFields.categoryX = "weekday";
@@ -86,7 +98,7 @@
         columnTemplate.width = am4core.percent(100);
         columnTemplate.height = am4core.percent(100);
 
-        series.heatRules.push({ target: columnTemplate, property: "fill", min: am4core.color("#ffffff"), max: am4core.color("#692155") });
+        series.heatRules.push({ target: columnTemplate, property: "fill", min: am4core.color("#ffffff"), max: am4core.color(MaxColor) });
 
         // heat legend
         var heatLegend = chart.bottomAxesContainer.createChild(am4charts.HeatLegend);

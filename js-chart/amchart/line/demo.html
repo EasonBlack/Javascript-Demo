@@ -56,6 +56,8 @@
     }
 
     function createChart(lineData) {
+        var totalColor = '#fdd400';
+        var pitColor = '#67b7dc';
 
         var chart = AmCharts.makeChart("chartdiv", {
             "theme": "light",
@@ -76,8 +78,8 @@
                     "bulletBorderColor": "#FFFFFF",
                     "hideBulletsCount": 50,
                     "lineThickness": 2,
-                    "lineColor": "#fdd400",
-                    "negativeLineColor": "#67b7dc",
+                    "lineColor": totalColor,
+                    //"negativeLineColor": "#67b7dc",
                     "valueField": "total"
                 },{
                     "useNegativeColorIfDown": true,
@@ -87,8 +89,8 @@
                     "bulletBorderColor": "#FFFFFF",
                     "hideBulletsCount": 50,
                     "lineThickness": 2,
-                    "lineColor": "#fdd400",
-                    "negativeLineColor": "#67b7dc",
+                    "lineColor": pitColor,
+                    //"negativeLineColor": "#67b7dc",
                     "valueField": "pit"
                 }
         
