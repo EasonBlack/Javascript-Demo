@@ -17,10 +17,23 @@
             width: 100%;
             height: 100%;
         }
+
+        .popup {
+            position:fixed;
+            display:none;
+            top:50px;
+            left:50px;
+            width:200px;
+            height:200px;
+            background-color:white;
+        }
     </style>
 </head>
 <body >
     <div id="chartdiv"></div>
+    <div id='p1' class='popup' >
+        Hello
+    </div>
 </body>
 <script>
 
@@ -111,12 +124,25 @@
 
         level1SeriesTemplate.columns.template.fillOpacity = 0;
 
+        console.log(level1SeriesTemplate.columns)
+        level1SeriesTemplate.columns.template.events.on("hit", (ev)=>{
+            console.log("clicked on ", ev.target);
+            console.log(ev.target.dataItem.dataContext);
+            console.log(ev.target.dataItem.dataContext.name);
+            $('#p1').html(ev.target.dataItem.dataContext._dataContext.pit);
+            $('#p1').show();
+        });
+
     }
 
     $.get(URL_PATH,(res)=>{
         console.log(res);
         var tree = processData(res)
         createChart(tree);
+    })
+
+    $('#p1').on('click',(e)=>{
+        $(e.target).hide();
     })
   
 
