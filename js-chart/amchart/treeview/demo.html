@@ -46,7 +46,13 @@
         data.forEach(d=>{
             var currentTree = treeData.find(data=>data.name == d.type )
             if(currentTree) {
-                currentTree.children.push({name: d.sympton, pit: d.pit, count: d.count});
+                let t = {name: d.sympton, pit: d.pit, count: d.count}
+                if(d.children) {
+                    t =  {name: d.sympton,  children: d.children};
+                } else {
+                    t = { name: d.sympton, pit: d.pit, count: d.count }
+                }
+                currentTree.children.push(t);
             } else {
                 treeData.push({
                     name: d.type, children: [
@@ -56,7 +62,7 @@
             }
             
         })
-      
+        console.log(treeData);
         return treeData;
     }
 
@@ -79,7 +85,10 @@
         // by default only current level series bullets are visible, but as we need brand bullets to be visible all the time, we modify it's hidden state
         level0SeriesTemplate.bulletsContainer.hiddenState.properties.opacity = 1;
         level0SeriesTemplate.bulletsContainer.hiddenState.properties.visible = true;
-
+        
+        var columnTemplate = level0SeriesTemplate.columns.template;
+        columnTemplate.tooltipText = 'xxxx \n {name}'
+        
         chart.colors.list = [ 
             am4core.color("#8F0D0D"),  am4core.color("blue"), am4core.color("yellow"),
         ]
@@ -93,23 +102,37 @@
             return am4core.color(am4core.colors.brighten(fill.rgb, -0.2));
         });
 
-        // add logo
-        var image = level0SeriesTemplate.columns.template.createChild(
-            am4core.Image
+        var bullet0 = level0SeriesTemplate.bullets.push(
+            new am4charts.LabelBullet()
         );
-        image.opacity = 0.15;
-        image.align = "center";
-        image.valign = "middle";
-        image.width = am4core.percent(80);
-        image.height = am4core.percent(80);
+        bullet0.locationX = 0.5;
+        bullet0.locationY = 0.5;
+        console.log(bullet0.label);
+        bullet0.label.text = "{name}";
+        bullet0.label.fontSize = 100;
+        bullet0.label.fontWeight = 'bolder';
+        bullet0.label.opacity = 0.4;
+        bullet0.label.fill = am4core.color("#ffffff");
 
-        // add adapter for href to load correct image
-        image.adapter.add("href", (href, target) => {
-            var dataItem = target.parent.dataItem;
-            if (dataItem) {
-                return "http://placehold.it/300x300&text=" + dataItem.treeMapDataItem.name;
-            }
-        });
+
+        // add logo
+        // var image = level0SeriesTemplate.columns.template.createChild(
+        //     am4core.Image
+        // );
+        // image.opacity = 0.15;
+        // image.align = "center";
+        // image.valign = "middle";
+        // image.width = am4core.percent(80);
+        // image.height = am4core.percent(80);
+
+        // // add adapter for href to load correct image
+        // image.adapter.add("href", (href, target) => {
+        //     var dataItem = target.parent.dataItem;
+        //     if (dataItem) {
+        //         return "https://placeholdit.imgix.net/~text?txtsize=43&bg=8F0D0D&txtclr=000&txt="+ dataItem.treeMapDataItem.name +"0&w=350&h=350"
+        //         //return "http://placehold.it/300x300&text=" + dataItem.treeMapDataItem.name;
+        //     }
+        // });
 
         // level1 series template
         var level1SeriesTemplate = chart.seriesTemplates.create("1");
@@ -125,7 +148,20 @@
         level1SeriesTemplate.columns.template.fillOpacity = 0;
 
         console.log(level1SeriesTemplate.columns)
-        level1SeriesTemplate.columns.template.events.on("hit", (ev)=>{
+       
+
+        // level2 series template
+        var level2SeriesTemplate = chart.seriesTemplates.create("2");
+        var bullet2 = level2SeriesTemplate.bullets.push(
+            new am4charts.LabelBullet()
+        );
+        bullet2.locationX = 0.5;
+        bullet2.locationY = 0.5;
+        bullet2.label.text = "{name}(PIT:{pit})";
+        bullet2.label.fill = am4core.color("#ffffff");
+        level2SeriesTemplate.columns.template.fillOpacity = 0;
+
+        level2SeriesTemplate.columns.template.events.on("hit", (ev)=>{
             console.log("clicked on ", ev.target);
             console.log(ev.target.dataItem.dataContext);
             console.log(ev.target.dataItem.dataContext.name);

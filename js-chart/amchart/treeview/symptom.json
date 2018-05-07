@@ -4,11 +4,11 @@
     {"type": "type1", "sympton": "symptom3", "pit": 3, "count": 70},
     {"type": "type1", "sympton": "symptom4", "pit": 1, "count": 80},
 
-    {"type": "type2", "sympton": "symptom1", "pit": 10, "count": 210},
-    {"type": "type2", "sympton": "symptom2", "pit": 9, "count": 110},
-    {"type": "type2", "sympton": "symptom3", "pit": 8, "count": 89},
-    {"type": "type2", "sympton": "symptom4", "pit": 7, "count": 34},
-    {"type": "type2", "sympton": "symptom5", "pit": 6, "count": 110},
+    {"type": "type2", "sympton": "symptom1",  "children": [{"name": "sub-sym1", "pit": 7, "count": 110}, {"name": "sub-sym2", "pit": 8, "count": 100}]},
+    {"type": "type2", "sympton": "symptom2",  "children": [{"name": "sub-sym1", "pit": 7, "count": 110}, {"name": "sub-sym2", "pit": 8, "count": 100}]},
+    {"type": "type2", "sympton": "symptom3",  "children": [{"name": "sub-sym1", "pit": 7, "count": 110}, {"name": "sub-sym2", "pit": 8, "count": 100}]},
+    {"type": "type2", "sympton": "symptom4",  "children": [{"name": "sub-sym1", "pit": 7, "count": 110}, {"name": "sub-sym2", "pit": 8, "count": 100}]},
+    {"type": "type2", "sympton": "symptom5",  "children": [{"name": "sub-sym1", "pit": 7, "count": 110}, {"name": "sub-sym2", "pit": 8, "count": 100}]},
 
     {"type": "type3", "sympton": "symptom1", "pit": 10, "count": 210},
     {"type": "type3", "sympton": "symptom2", "pit": 6, "count": 45},
