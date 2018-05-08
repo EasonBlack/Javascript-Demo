@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../../../style/fixed_table_rc.css" type="text/css" rel="stylesheet">
+    <style>
+        .container {
+            width: 100%;
+
+        }
+
+        thead {
+            background-color: steelblue;
+        }
+
+        thead th {
+          
+        }
+
+        .ft_cwrapper {
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='container'>
+
+    </div>
+</body>
+<script src="../../../vendor/jquery-1.11.1.js"></script>
+<!-- <script src="../../../vendor/fixed_table_rc.js"></script> -->
+<script src="../fixed_table_rc.eason.js"></script>
+<script>
+
+    $(document).ready(() => {
+
+        let items = []
+        let headers = ['AAAA', "BBBBB", "CCCCC", "DDDDDD", "EEEEEE", "FFFFFF"]
+        for (let i = 0; i < 100; i++) {
+            items.push([
+                Math.random() * 1000 + 10,
+                Math.random() * 1000 + 10,
+                Math.random() * 1000 + 10,
+                Math.random() * 1000 + 10,
+                Math.random() * 1000 + 10,
+                Math.random() * 1000 + 10
+            ])
+        }
+        let table_html = [
+            "<table id='fixedHeader'>",
+            "<thead>"
+        ]
+        let headers_html = headers.map(h => {
+            return `<th>${h}</th>`
+        });
+        table_html.push(...headers_html)
+        table_html.push(...[
+            "</thead>",
+            "<tbody>"
+        ])
+        let body_html = items.map(item => {
+            return "<tr>" + item.map(t => {
+                return `<td>${(t)}</td>`
+            }).join('') + "</tr>"
+        })
+        table_html.push(...body_html);
+        table_html.push(...['</tbody>', '</table>'])
+        $('#container').html(table_html.join(''));
+
+
+
+        console.log('start')
+        $('#fixedHeader').fxdHdrCol({
+            fixedCols: 2,
+            width: "100%",
+            height: 300,
+            colModal: [
+                { width: 100, align: 'center' },
+                { width: 100, align: 'center' },
+                { width: 100, align: 'left' },
+                { width: 100, align: 'left' },
+                { width: 100, align: 'left' },
+                { width: 100, align: 'left' }
+            ],
+        });
+
+
+        //console.log(table_html.join(''));
+    });
+</script>
+
+</html>

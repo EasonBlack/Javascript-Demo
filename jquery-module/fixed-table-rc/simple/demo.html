@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../../../style/fixed_table_rc.css" type="text/css" rel="stylesheet">
+    <style>
+      .container {
+        width:100%;
+        height:200px;
+      }
+
+      thead {
+        background-color: steelblue;
+      }
+      .ft_cwrapper {
+        background-color: white;
+      }
+    </style>
+</head>
+<body>
+<div class='container'>
+  <table id='fixedHeader'>
+    <thead>
+        <th>8-10</th>
+        <th>10-12</th>
+        <th>12-14</th>
+        <th>14-16</th>
+        <th>16-18</th>
+        <th>18-20</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="cell booked">Already booked</td>
+            <td class="cell available">Available for booking</td>
+            <td class="cell booked">Already booked</td>
+            <td class="cell booked">Already booked</td>
+            <td class="cell available">Available for booking</td>
+            <td class="cell available">Available for booking</td>
+        </tr>
+        <tr>
+            <td class="cell available">Available for booking</td>
+            <td class="cell booked">Already booked</td>
+            <td class="cell booked">Already booked</td>
+            <td class="cell available">Available for booking</td>
+            <td class="cell booked">Already booked</td>
+            <td class="cell available">Available for booking</td>
+        </tr>
+        <tr>
+            <td class="cell booked">Already booked</td>
+            <td class="cell available">Available for booking</td>
+            <td class="cell booked">Already booked</td>
+            <td class="cell booked">Already booked</td>
+            <td class="cell available">Available for booking</td>
+            <td class="cell available">Available for booking</td>
+        </tr>
+        <tr>
+            <td class="cell booked">Already booked</td>
+            <td class="cell available">Available for booking</td>
+            <td class="cell available">Available for booking</td>
+            <td class="cell available">Available for booking</td>
+            <td class="cell booked">Already booked</td>
+            <td class="cell booked">Already booked</td>
+        </tr>
+        <tr>
+            <td class="cell booked">Already booked</td>
+            <td class="cell available">Available for booking</td>
+            <td class="cell booked">Already booked</td>
+            <td class="cell booked">Already booked</td>
+            <td class="cell booked">Already booked</td>
+            <td class="cell available">Available for booking</td>
+        </tr>
+        <tr>
+            <td class="cell booked">Already booked</td>
+            <td class="cell available">Available for booking</td>
+            <td class="cell booked">Already booked</td>
+            <td class="cell booked">Already booked</td>
+            <td class="cell available">Available for booking</td>
+            <td class="cell available">Available for booking</td>
+        </tr>
+        <tr>
+            <td class="cell available">Available for booking</td>
+            <td class="cell booked">Already booked</td>
+            <td class="cell booked">Already booked</td>
+            <td class="cell available">Available for booking</td>
+            <td class="cell booked">Already booked</td>
+            <td class="cell available">Available for booking</td>
+        </tr>
+        <tr>
+            <td class="cell booked">Already booked</td>
+            <td class="cell available">Available for booking</td>
+            <td class="cell booked">Already booked</td>
+            <td class="cell booked">Already booked</td>
+            <td class="cell available">Available for booking</td>
+            <td class="cell available">Available for booking</td>
+        </tr>
+        <tr>
+            <td class="cell booked">Already booked</td>
+            <td class="cell available">Available for booking</td>
+            <td class="cell available">Available for booking</td>
+            <td class="cell available">Available for booking</td>
+            <td class="cell booked">Already booked</td>
+            <td class="cell booked">Already booked</td>
+        </tr>
+        <tr>
+            <td class="cell booked">Already booked</td>
+            <td class="cell available">Available for booking</td>
+            <td class="cell booked">Already booked</td>
+            <td class="cell booked">Already booked</td>
+            <td class="cell booked">Already booked</td>
+            <td class="cell available">Available for booking</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</body>
+<script src="../../../vendor/jquery-1.11.1.js"></script>
+<script src="../../../vendor/fixed_table_rc.js"></script>
+<script>
+$(document).ready(function() {
+    $('#fixedHeader').fxdHdrCol({
+        fixedCols:  2,
+        width:     "100%",
+        height:    300,
+        colModal: [
+               { width: 100, align: 'center' },
+               { width: 70, align: 'center' },
+               { width: 70, align: 'left' },
+               { width: 70, align: 'left' },
+               { width: 70, align: 'left' },
+               { width: 70, align: 'left' }
+        ],
+    });
+   });
+</script>
+</html>
