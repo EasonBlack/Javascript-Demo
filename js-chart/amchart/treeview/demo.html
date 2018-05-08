@@ -147,9 +147,9 @@
         bullet1.label.fill = am4core.color("#ffffff");
 
         level1SeriesTemplate.columns.template.fillOpacity = 0;
+    
+        level1SeriesTemplate.columns.template.tooltipText =  'xxxx \n {name}:{parentName} - {pit} - {test}'
       
-        level1SeriesTemplate.columns.template.tooltipText =  'xxxx \n {name}: {pit} - {test}'
-
         // level2 series template
         var level2SeriesTemplate = chart.seriesTemplates.create("2");
         var bullet2 = level2SeriesTemplate.bullets.push(

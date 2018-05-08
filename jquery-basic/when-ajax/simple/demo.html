@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div class="container">
+
+</div>
+</body>
+<script src="../../../vendor/jquery-1.11.1.js"></script>
+<script>
+    let reqs = [];
+    let a = $.get('../data/1.json'); 
+    let b = $.get('../data/2.json'); 
+    reqs.push(a);
+    reqs.push(b);
+    $.when(...reqs).done((...res)=>{
+        console.log(res);
+    })
+   
+</script>
+</html>
