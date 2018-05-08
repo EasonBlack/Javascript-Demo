@@ -46,11 +46,11 @@
         data.forEach(d=>{
             var currentTree = treeData.find(data=>data.name == d.type )
             if(currentTree) {
-                let t = {name: d.sympton, pit: d.pit, count: d.count}
+                let t = {name: d.sympton, pit: d.pit,test: d.test, count: d.count}
                 if(d.children) {
                     t =  {name: d.sympton,  children: d.children};
                 } else {
-                    t = { name: d.sympton, pit: d.pit, count: d.count }
+                    t = { name: d.sympton, pit: d.pit,test: d.test, count: d.count }
                 }
                 currentTree.children.push(t);
             } else {
@@ -87,7 +87,8 @@
         level0SeriesTemplate.bulletsContainer.hiddenState.properties.visible = true;
         
         var columnTemplate = level0SeriesTemplate.columns.template;
-        columnTemplate.tooltipText = 'xxxx \n {name}'
+        console.log(level0SeriesTemplate.columns)
+        columnTemplate.tooltipText = 'xxxx \n {name}: {count} : {test}'
         
         chart.colors.list = [ 
             am4core.color("#8F0D0D"),  am4core.color("blue"), am4core.color("yellow"),
@@ -107,7 +108,7 @@
         );
         bullet0.locationX = 0.5;
         bullet0.locationY = 0.5;
-        console.log(bullet0.label);
+    
         bullet0.label.text = "{name}";
         bullet0.label.fontSize = 100;
         bullet0.label.fontWeight = 'bolder';
@@ -146,9 +147,8 @@
         bullet1.label.fill = am4core.color("#ffffff");
 
         level1SeriesTemplate.columns.template.fillOpacity = 0;
-
-        console.log(level1SeriesTemplate.columns)
-       
+      
+        level1SeriesTemplate.columns.template.tooltipText =  'xxxx \n {name}: {pit} - {test}'
 
         // level2 series template
         var level2SeriesTemplate = chart.seriesTemplates.create("2");
