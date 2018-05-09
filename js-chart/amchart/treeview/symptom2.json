@@ -1,0 +1,219 @@
+[
+	{
+		"Type" : "1",
+		"Symptom" : "T1S1",
+		"PIT" : 6,
+		"Tcount" : 44284,
+		"Type_Name" : "Modem Related"
+	},
+	{
+		"Type" : "1",
+		"Symptom" : "T1S2",
+		"PIT" : 7,
+		"Tcount" : 14128,
+		"Type_Name" : "Modem Related"
+	},
+	{
+		"Type" : "1",
+		"Symptom" : "T1S3",
+		"PIT" : 0,
+		"Tcount" : 62126,
+		"Type_Name" : "Modem Related"
+	},
+	{
+		"Type" : "1",
+		"Symptom" : "T1S4",
+		"PIT" : 6,
+		"Tcount" : 28672,
+		"Type_Name" : "Modem Related"
+	},
+	{
+		"Type" : "1",
+		"Symptom" : "T1S5",
+		"PIT" : 7,
+		"Tcount" : 9796,
+		"Type_Name" : "Modem Related"
+	},
+	{
+		"Type" : "1",
+		"Symptom" : "T1S6",
+		"PIT" : 10,
+		"Tcount" : 55546,
+		"Type_Name" : "Modem Related"
+	},
+	{
+		"Type" : "2",
+		"Symptom" : "T2S1",
+		"PIT" : 8,
+		"Tcount" : 10619,
+		"Type_Name" : "AdMaster Specific"
+	},
+	{
+		"Type" : "2",
+		"Symptom" : "T2S2",
+		"PIT" : 4,
+		"Tcount" : 55415,
+		"Type_Name" : "AdMaster Specific"
+	},
+	{
+		"Type" : "2",
+		"Symptom" : "T2S3",
+		"PIT" : 10,
+		"Tcount" : 4430,
+		"Type_Name" : "AdMaster Specific"
+	},
+	{
+		"Type" : "2",
+		"Symptom" : "T2S4",
+		"PIT" : 1,
+		"Tcount" : 57766,
+		"Type_Name" : "AdMaster Specific"
+	},
+	{
+		"Type" : "2",
+		"Symptom" : "T2S5",
+		"PIT" : 7,
+		"Tcount" : 60647,
+		"Type_Name" : "AdMaster Specific"
+	},
+	{
+		"Type" : "2",
+		"Symptom" : "T2S6",
+		"PIT" : 10,
+		"Tcount" : 57465,
+		"Type_Name" : "AdMaster Specific"
+	},
+	{
+		"Type" : "2",
+		"Symptom" : "T2S7",
+		"PIT" : 3,
+		"Tcount" : 7082,
+		"Type_Name" : "AdMaster Specific"
+	},
+	{
+		"Type" : "3",
+		"Symptom" : "T3S1",
+		"PIT" : 9,
+		"Tcount" : 41245,
+		"Type_Name" : "Viewing Time Related"
+	},
+	{
+		"Type" : "3",
+		"Symptom" : "T3S2",
+		"PIT" : 4,
+		"Tcount" : 42435,
+		"Type_Name" : "Viewing Time Related"
+	},
+	{
+		"Type" : "3",
+		"Symptom" : "T3S3",
+		"PIT" : 3,
+		"Tcount" : 53224,
+		"Type_Name" : "Viewing Time Related"
+	},
+	{
+		"Type" : "3",
+		"Symptom" : "T3S4",
+		"PIT" : 8,
+		"Tcount" : 6826,
+		"Type_Name" : "Viewing Time Related"
+	},
+	{
+		"Type" : "3",
+		"Symptom" : "T3S5",
+		"PIT" : 7,
+		"Tcount" : 52412,
+		"Type_Name" : "Viewing Time Related"
+	},
+	{
+		"Type" : "3",
+		"Symptom" : "T3S6",
+		"PIT" : 3,
+		"Tcount" : 23970,
+		"Type_Name" : "Viewing Time Related"
+	},
+	{
+		"Type" : "3",
+		"Symptom" : "T3S1",
+		"PIT" : 4,
+		"Tcount" : 28917,
+		"Type_Name" : "Viewing Time Related"
+	},
+	{
+		"Type" : "4",
+		"Symptom" : "T4S2",
+		"PIT" : 0,
+		"Tcount" : 9354,
+		"Type_Name" : "MiaoZhen Related"
+	},
+	{
+		"Type" : "4",
+		"Symptom" : "T4S3",
+		"PIT" : 9,
+		"Tcount" : 63023,
+		"Type_Name" : "MiaoZhen Related"
+	},
+	{
+		"Type" : "4",
+		"Symptom" : "T4S4",
+		"PIT" : 9,
+		"Tcount" : 36692,
+		"Type_Name" : "MiaoZhen Related"
+	},
+	{
+		"Type" : "4",
+		"Symptom" : "T4S5",
+		"PIT" : 7,
+		"Tcount" : 59116,
+		"Type_Name" : "MiaoZhen Related"
+	},
+	{
+		"Type" : "4",
+		"Symptom" : "T4S1",
+		"PIT" : 7,
+		"Tcount" : 35156,
+		"Type_Name" : "MiaoZhen Related"
+	},
+	{
+		"Type" : "5",
+		"Symptom" : "T5S2",
+		"PIT" : 7,
+		"Tcount" : 9755,
+		"Type_Name" : "Device Related"
+	},
+	{
+		"Type" : "5",
+		"Symptom" : "T5S3",
+		"PIT" : 2,
+		"Tcount" : 46414,
+		"Type_Name" : "Device Related"
+	},
+	{
+		"Type" : "5",
+		"Symptom" : "T5S4",
+		"PIT" : 7,
+		"Tcount" : 8094,
+		"Type_Name" : "Device Related"
+	},
+	{
+		"Type" : "5",
+		"Symptom" : "T5S5",
+		"PIT" : 4,
+		"Tcount" : 3622,
+		"Type_Name" : "Device Related"
+	},
+	{
+		"Type" : "5",
+		"Symptom" : "T5S6",
+		"PIT" : 8,
+		"Tcount" : 12998,
+		"Type_Name" : "Device Related"
+	},
+	{
+		"Type" : "5",
+		"Symptom" : "T5S1",
+		"PIT" : 1,
+		"Tcount" : 41895,
+		"Type_Name" : "Device Related"
+	}
+]

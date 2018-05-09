@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="//www.amcharts.com/lib/4/core.js"></script>
+    <script src="//www.amcharts.com/lib/4/charts.js"></script>
+    <script src="//www.amcharts.com/lib/4/themes/animated.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <style>
+        body {
+            font-family: "Archivo Narrow";
+            height: 98vh;
+            font-size: 0.8em;
+        }
+
+        #chartdiv {
+            width: 100%;
+            height: 100%;
+        }
+
+        .popup {
+            position: fixed;
+            display: none;
+            top: 50px;
+            left: 50px;
+            width: 200px;
+            height: 200px;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="chartdiv" style='display:none'></div>
+    <div id='p1' class='popup'>
+        Hello
+    </div>
+    <button id='btnShow'>Show</button>
+</body>
+<script>
+
+    am4core.useTheme(am4themes_animated);
+    var URL_PATH = 'symptom2.json';
+
+
+    function processData(data) {
+        var treeData = [];
+        data.forEach(d => {
+            var currentTree = treeData.find(data => data.name == d.Type_Name);
+            if (currentTree) {
+                currentTree.children.push({ name: d.Symptom, pit: d.PIT, count: d.Tcount });
+            } else {
+                treeData.push({
+                    name: d.Type_Name, children: [
+                        { name: d.Symptom, pit: d.PIT, count: d.Tcount }
+                    ]
+                });
+            }
+
+        })
+        console.log(treeData);
+        return treeData;
+    }
+
+    function createChart(tree) {
+
+        var chart = am4core.create("chartdiv", am4charts.TreeMap);
+        chart.padding(0, 0, 0, 0);
+        chart.data = tree;
+        chart.maxLevels = 1;
+        // define data fields
+        chart.dataFields.value = "count";
+        chart.dataFields.name = "name";
+        chart.dataFields.children = "children";
+        chart.homeText = "Symptom ";
+        chart.navigationBar = new am4charts.NavigationBar();
+
+        var symptomColor = ['#15658A', '#6794DC', '#6771DC', '#A367DC', '#C767DC'];
+        symptomColor.forEach(c => {
+            chart.colors.list.push(am4core.color(c));
+        });
+
+
+        var level0SeriesTemplate = chart.seriesTemplates.create("0");
+        level0SeriesTemplate.strokeWidth = 2;
+        console.log(level0SeriesTemplate);
+        // by default only current level series bullets are visible, but as we need brand bullets to be visible all the time, we modify it's hidden state
+        level0SeriesTemplate.bulletsContainer.hiddenState.properties.opacity = 1;
+        level0SeriesTemplate.bulletsContainer.hiddenState.properties.visible = true;
+        level0SeriesTemplate.columns.template.tooltipText = 'Symptom Type : \n {name} : Total count = {value}';
+        var bullet0 = level0SeriesTemplate.bullets.push(
+            new am4charts.LabelBullet()
+        );
+        bullet0.locationX = 0.5;
+        bullet0.locationY = 0.5;
+        console.log(bullet0.label);
+        bullet0.label.text = "{name}";
+        bullet0.label.fontSize = 20;
+        bullet0.label.fontWeight = 'bolder';
+        bullet0.label.opacity = 0.4;
+        bullet0.label.fill = am4core.color("#ffffff");
+
+
+        // create hover state
+        var hoverState = level0SeriesTemplate.columns.template.states.create("hover");
+
+
+        // darken
+        hoverState.adapter.add("fill", (fill, target) => {
+            return am4core.color(am4core.colors.brighten(fill.rgb, -0.2));
+        });
+
+        // level1 series template
+        var level1SeriesTemplate = chart.seriesTemplates.create("1");
+
+        var bullet1 = level1SeriesTemplate.bullets.push(
+            new am4charts.LabelBullet()
+        );
+        bullet1.locationX = 0.5;
+        bullet1.locationY = 0.5;
+        bullet1.label.text = "{name}(PIT:{pit})";
+        bullet1.label.fill = am4core.color("#ffffff");
+
+        level1SeriesTemplate.columns.template.fillOpacity = 0;
+        console.log('yyyyyyyyyyyyyyyyyy');
+
+    }
+
+    $.get(URL_PATH, (res) => {
+        console.log(res);
+        var tree = processData(res)
+        createChart(tree);
+    })
+
+    $('#p1').on('click', (e) => {
+        $(e.target).hide();
+    })
+
+    $('#btnShow').on('click', (e) => {
+        $('#chartdiv').css('display' , 'block');
+    })
+
+// create chart
+
+
+</script>
+
+</html>
