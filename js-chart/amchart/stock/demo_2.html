@@ -1,0 +1,147 @@
+
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title></title>
+        <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+        <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+        <script src="https://www.amcharts.com/lib/3/amstock.js"></script>
+        <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+        <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+        <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+        <script src='../../../vendor/moment.js'></script>
+        <style>
+            #chartdiv {
+            width: 100%;
+            height: 500px;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="chartdiv"></div>
+    </body>
+</html>
+    <script>
+    var chartData1 = [];
+    
+    
+    generateChartData();
+    
+    function generateChartData() {
+      var firstDate = new Date();
+      firstDate.setDate( firstDate.getDate() - 100 );
+      firstDate.setHours( 0, 0, 0, 0 );
+    
+      var a1 = 1500;
+      var b1 = 1500;
+    
+      for ( var i = 0; i < 100; i++ ) {
+        var newDate = new Date( firstDate );
+        newDate.setDate( newDate.getDate() + i );
+    
+        a1 += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
+        b1 += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
+        for(let j=0;j<24;j++){
+
+          chartData1.push( {
+            "date": moment(newDate).add(j,'hours').format('YYYY-MM-DD HH:mm:ss').toString(),
+            "value": a1 + Math.round(Math.random()*10) + 10,
+            "volume": b1 + 1500 + Math.round(Math.random()*10) + 10
+          } );
+        }
+       
+      }
+    }
+    console.log(chartData1);
+    
+    var chart = AmCharts.makeChart( "chartdiv", {
+      "type": "stock",
+      "theme": "light",
+      "dataSets": [ {
+          "title": "first data set",
+          "fieldMappings": [ {
+            "fromField": "value",
+            "toField": "value"
+          }, {
+            "fromField": "volume",
+            "toField": "volume"
+          } ],
+          "dataProvider": chartData1,
+          "categoryField": "date"
+        }
+      ],
+    
+      "panels": [ {
+        "showCategoryAxis": false,
+        "title": "Value",
+        "percentHeight": 70,
+        "stockGraphs": [ {
+          "id": "g1",
+          "valueField": "value",
+          "comparable": true,
+          "compareField": "value",
+          "balloonText": "[[title]]:<b>[[value]]</b>",
+          "compareGraphBalloonText": "[[title]]:<b>[[value]]</b>"
+        } ],
+        "stockLegend": {
+          "periodValueTextComparing": "[[percents.value.close]]%",
+          "periodValueTextRegular": "[[value.close]]"
+        }
+      }, {
+        "title": "Volume",
+        "percentHeight": 30,
+        "stockGraphs": [ {
+          "valueField": "volume",
+          "type": "column",
+          "showBalloon": false,
+          "fillAlphas": 1
+        } ],
+        "stockLegend": {
+          "periodValueTextRegular": "[[value.close]]"
+        }
+      } ],
+    
+      "chartScrollbarSettings": {
+        "graph": "g1"
+      },
+    
+      "categoryAxesSettings": {
+        "minPeriod": "hh",
+        "equalSpacing": true,
+        "startOnAxis": true
+      },
+
+      "chartCursorSettings": {
+        "valueBalloonsEnabled": true,
+        "fullWidth": true,
+        "cursorAlpha": 0.1,
+        "valueLineBalloonEnabled": true,
+        "valueLineEnabled": true,
+        "valueLineAlpha": 0.5
+      },
+    
+      "periodSelector": {
+        "position": "left",
+        "periods": [ {
+          "period": "hh",
+          "selected": true,
+          'count': 24,
+          "label": "24 hour"
+        }, {
+          "period": "DD",
+          'count': 5,
+          "label": "5 days"
+        }]
+      },
+    
+      "dataSetSelector": {
+        "position": "left"
+      },
+    
+      "export": {
+        "enabled": true
+      }
+    } );
+    </script>
+    
