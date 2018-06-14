@@ -12,23 +12,27 @@ function activate(context) {
     // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "easontest" is now active!');
 
-    // The command has been defined in the package.json file
-    // Now provide the implementation of the command with  registerCommand
-    // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerCommand('extension.sayHello', function () {
-        console.log('start!');
-        var editor = vscode.window.activeTextEditor;
-        console.log(editor);
-        console.log(vscode.TextDocument);
-        // let doc = vscode.TextDocument;
-        //let working_dir = path.dirname(doc.fileName);
-        // console.log(working_dir);
-        //return new vscode.Location(vscode.Uri.file(found_fname), new vscode.Position(0, 1));
-    });
-
-    context.subscriptions.push(disposable);
+    context.subscriptions.push(
+        vscode.languages.registerDefinitionProvider(
+            {
+                language: 'javascript',
+                scheme: 'file'
+            },
+            new PeekFileDefinitionProvider())
+     );
 }
 exports.activate = activate;
+
+
+class PeekFileDefinitionProvider extends vscode.DefinitionProvider {
+    provideDefinition(document, position, token) {
+        console.log('start in provideDefinition');
+        console.log(arguments);
+        return null;
+    }
+}
+
+
 
 // this method is called when your extension is deactivated
 function deactivate() {
