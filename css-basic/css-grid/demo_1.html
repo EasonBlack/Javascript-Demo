@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrapper {
+            display:grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-column-gap: 5px;
+            grid-row-gap: 5px;
+            grid-auto-rows: minmax(100px, auto);
+           
+        }
+        .wrapper .box {
+           background-color: steelblue;
+           color:white;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class='wrapper'>
+       <div class='box'>A</div>
+       <div class='box'>B</div>
+       <div class='box'>C</div>
+       <div class='box'>D</div>
+       <div class='box'>E</div>
+       <div class='box'>F</div>
+       <div class='box'>G</div>
+       <div class='box'>H</div>
+       <div class='box'>I</div>
+    </div>
+</body>
+</html>
