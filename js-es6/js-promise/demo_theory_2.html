@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function Promise(fn) {
+        //需要成功以及成功时的回调
+        var state = 'pending';
+        var doneList = [];
+        this.then = function (done) {
+            switch (state) {
+                case "pending":
+                    doneList.push(done);
+                    return this;
+                    break;
+                case 'fulfilled':
+                    console.log('after fulfilled');
+                    done();
+                    return this;
+                    break;
+            }
+        }
+        function resolve(newValue) {
+            state = "fulfilled";
+            setTimeout(function () {
+                var value = newValue;
+                //执行resolve时，我们会尝试将doneList数组中的值都执行一遍
+                //当遇到正常的回调函数的时候，就执行回调函数
+                //当遇到一个新的promise的时候，就将原doneList数组里的回调函数推入新的promise的doneList，以达到循环的目的
+                for (var i = 0; i < doneList.length; i++) {
+                    var temp = doneList[i](value)
+                    if (temp instanceof Promise) {
+                        var newP = temp;
+                        for (i++; i < doneList.length; i++) {
+                            newP.then(doneList[i]);
+                        }
+                    } else {
+                        value = temp;
+                    }
+                }
+            }, 0);
+        }
+        fn(resolve);
+    }
+    var p = function () {
+        return new Promise(function (resolve) {
+            setTimeout(function () {
+                resolve('p 的结果');
+            }, 100);
+        });
+    }
+    var p2 = function (input) {
+        return new Promise(function (resolve) {
+            setTimeout(function () {
+                console.log('p2拿到前面传入的值：' + input)
+                resolve('p2的结果');
+            }, 100);
+        });
+    }
+    p()
+        .then(function (res) { console.log('p的结果:' + res); return 'p then方法第一次返回' })
+        .then(function (res) { console.log('p第一次then方法的返回：' + res); return 'p then方法第二次返回' })
+        .then(p2)
+        .then(function (res) { console.log('p2的结果：' + res) });
+
+
+</script>
+
+</html>

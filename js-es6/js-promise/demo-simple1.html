@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+
+<script>
+   
+    let a = new  Promise(function(resolve, reject){
+        setTimeout(function(){
+            console.log('aaaaa');
+            resolve('bbbb');
+        }, 2000);
+    })
+
+    //aaaaa在执行then之前就会输出
+    a.then((a)=>console.log(a));
+
+
+</script>
+</html>
