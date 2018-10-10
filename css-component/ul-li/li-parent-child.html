@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      ul {
+        list-style:none;
+      }
+      .item-header {
+        display: flex;
+      }
+      .item-row {
+        margin-bottom:0.5em;
+      }
+      .item-wrapper, .children-wrapper {
+        display: flex;
+        position:relative;
+      }
+      .children-wrapper {
+        height:1.4em;
+      }
+      .extra-wrapper {
+        font-size:0.7em;
+        color: #ccc;
+      }
+      .extra-wrapper .col-main {
+        padding-left: 15px;
+      }
+      .children-wrapper .col-main {
+        padding-left: 15px;
+      }
+      .col-main {
+        flex: 1;
+      }
+      .col {
+        width:10%; 
+        text-align: center;
+      }
+     
+    </style>
+</head>
+<body>
+<div id="app">
+    <ul class='container'>
+      <li class='item-header'>
+        <span class='col-main'>Name</span>
+        <span class='col'>Price</span>
+        <span class='col'>Num</span>
+        <span class='col'>Total</span>
+      </li>
+      <li class='item-row' v-for='item in items'>
+        <div class='item-wrapper'>
+            <span class='col-main'>{{item.name}}</span>
+            <span class='col'>{{item.price}}</span>
+            <span class='col'>{{item.num}}</span>
+            <span class='col'>{{item.price * item.num}}</span>
+        </div>
+        <template  v-for='c in item.children'>
+          <div  class='children-wrapper'>
+              <span class='col-main'>{{c.name}}</span>
+              <span class='col'>{{c.price}}</span>
+              <span class='col'>{{c.num}}</span>
+              <span class='col'>{{c.price * c.num}}</span>
+          </div>
+          <div class='extra-wrapper' v-if='c.text'>
+              <span class='col-main'>{{c.text}}</span>
+              <span class='col'></span>
+              <span class='col'></span>
+              <span class='col'></span>
+          </div>
+        </template>
+        
+       
+        
+      </li>
+    </ul>
+</div>
+</body>
+<script src="../../vendor/vue2.3.2.js"></script>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      items: [
+        {name: "AAAA", price: "34", num: 1, children: [
+          {name: "a2", price: "12", num: 1, text: 'aaaa'},
+          {name: "a3", price: "18", num: 1}
+        ] },
+        {name: "BBBB", price: "14", num: 2, children: [] }
+      ]  
+    }
+  })
+</script>
+</html>

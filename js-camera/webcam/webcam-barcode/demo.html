@@ -1,0 +1,131 @@
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>WebcamJS Test Page</title>
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+  <style type="text/css">
+    body {
+      font-family: Helvetica, sans-serif;
+    }
+
+    h2,
+    h3 {
+      margin-top: 0;
+    }
+
+    form {
+      margin-top: 15px;
+    }
+
+    form>input {
+      margin-right: 15px;
+    }
+
+    #results {
+      float: right;
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid;
+      background: #ccc;
+    }
+
+    #picture {
+      position:absolute;
+      top:-300px;
+      left:0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="results">
+    <div id='textbit'></div>
+  </div>
+
+  <h1>Demo</h1>
+
+  <canvas width="320" height="240" id="picture" visibility=hidden></canvas>
+
+  <div id="my_camera" style="width: 320px; height: 240px;">
+    <div></div><video autoplay="autoplay" style="width: 320px; height: 240px;"></video>
+  </div>
+
+  <!-- First, include the Webcam.js JavaScript Library -->
+  <script type="text/javascript" src="../webcam.min.js"></script>
+
+  <!-- Configure a few settings and attach camera -->
+  <script language="JavaScript">
+    Webcam.set({
+      width: 320,
+      height: 240,
+      image_format: 'jpeg',
+      jpeg_quality: 90
+    });
+    Webcam.attach('#my_camera');
+  </script>
+
+  <form>
+    <input type="button" value="Take Snapshot" onclick="take_snapshot()">
+  </form>
+  <script src='exif.js'></script>
+  <script src='JOB.js'></script>
+  <script language="JavaScript">
+    var canvas =document.getElementById("picture");
+    var ctx = canvas.getContext("2d");
+    var Result = document.querySelector("#textbit");
+    JOB.Init();
+    JOB.SetImageCallback(function (result) {
+      if (result.length > 0) {
+        alert("win");
+        var tempArray = [];
+        for (var i = 0; i < result.length; i++) {
+          tempArray.push(result[i].Format + " : " + result[i].Value);
+        }
+        Result.innerHTML = tempArray.join("<br />");
+      } else {
+        if (result.length === 0) {
+          Result.innerHTML = "Decoding failed.";
+        }
+      }
+    });
+    JOB.PostOrientation = true;
+    JOB.OrientationCallback = function (result) {
+      canvas.width = result.width;
+      canvas.height = result.height;
+      var data = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      for (var i = 0; i < data.data.length; i++) {
+        data.data[i] = result.data[i];
+      }
+      ctx.putImageData(data, 0, 0);
+    };
+    JOB.SwitchLocalizationFeedback(true);
+    JOB.SetLocalizationCallback(function (result) {
+      ctx.beginPath();
+      ctx.lineWIdth = "2";
+      ctx.strokeStyle = "red";
+      for (var i = 0; i < result.length; i++) {
+        ctx.rect(result[i].x, result[i].y, result[i].width, result[i].height);
+      }
+      ctx.stroke();
+    });
+
+
+    let showPicture = document.createElement("img");
+    function take_snapshot() {
+      Webcam.snap(function (data_uri) {
+        showPicture.src = data_uri
+        showPicture.onload = function(event) {
+          Result.innerHTML="";
+          JOB.DecodeImage(showPicture);
+        };
+      });
+    }
+  </script>
+
+
+
+</body>
+
+</html>

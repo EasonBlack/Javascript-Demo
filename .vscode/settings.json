@@ -1,3 +1,9 @@
 {
-    "liveServer.settings.multiRootWorkspaceName": "javascript-study"
+    "liveServer.settings.multiRootWorkspaceName": "javascript-study",
+    "liveServer.settings.https": {
+        "enable": true, //set it true to enable the feature.
+        "cert": "e:\\ssl\\server.crt", //full path of the certificate
+        "key": "e:\\ssl\\server.key", //full path of the private key
+        "passphrase": "123456"
+    }
 }
