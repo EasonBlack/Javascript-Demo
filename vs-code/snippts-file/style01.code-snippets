@@ -1,0 +1,22 @@
+{
+	"flex_center": {
+		"prefix": "flex",
+		"scope": "css,scss",
+		"body": [
+			"display: flex;",
+			"justify-content: center;"
+		],
+		"description": "flex center"
+	},
+
+	"flex_center_align": {
+		"prefix": "flex align",
+		"scope": "css,scss",
+		"body": [
+			"display: flex;",
+			"justify-content: center;",
+			"align-items: center;"
+		],
+		"description": "flex center with align"
+	}
+}

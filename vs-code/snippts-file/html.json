@@ -1,0 +1,9 @@
+{
+	"console_log": {
+		"prefix": "ttt",
+		"body": [
+			"<div>ttt</div>"
+		],
+		"description": "test"
+	},
+}

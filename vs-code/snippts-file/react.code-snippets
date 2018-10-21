@@ -1,0 +1,99 @@
+{
+	"react_component_class": {
+		"prefix": "react component class",
+		"scope": "javascript",
+		"body": [
+			"import React from 'react'",
+			"",
+			"class ${1:Com} extends React.Component {",
+			"",
+			"\tconstructor(props) {",
+			"\t\tsuper(props);",
+			"\t}",
+			"",
+			"\trender() {",
+			"\t\treturn  <div>",
+			"\t\t\tThis is somthing",
+			"\t\t</div>;",
+			"\t}",
+			"",	
+			"\tcomponentDidMount() {",
+			"\t}",
+			"}",
+			"",
+			"export default ${1:Com};"
+		],
+		"description": "react component structure class"
+	},
+	"react_component_const": {
+		"prefix": "react component const",
+		"scope": "javascript",
+		"body": [
+			"import React from 'react';",
+			"",
+			"const ${1:Com} = ({prop})=>(",
+			"\t<div className=\"\">",
+			"\t\t{prop}",
+			"\t</div>",
+			")",
+			"",
+			"export default ${1:Com};"
+		],
+		"description": "react component structure const"
+	},
+
+	"react_redux_connect": {
+		"prefix": "react redux connect",
+		"scope": "javascript",
+		"body": [
+			"import {connect} from 'react-redux';",
+			"import {bindActionCreators} from 'redux'",
+			"function mapStateToProps(state) {",
+			"\treturn state;",
+			"}",
+			"",
+			"var mapDispatchToProps = function (dispatch) {",
+			"\treturn {",
+			"\t\tactions: bindActionCreators(actions, dispatch)",
+			"\t};",
+			"}",
+			"",
+			"export default connect(mapStateToProps, mapDispatchToProps)(Com);"
+		],
+		"description": "react redux connect"
+	},
+
+	"react_for_loop": {
+		"prefix": "react for loop",
+		"scope": "javascript",
+		"body": [
+			"{",
+			"\titems && items.map((c,index)=>{",
+			"\t\treturn (<div className=\"\" key={index}",
+			"\t\tonClick={()=>clickHandle()}>",
+			"\t\t{c.NAME}",
+			"\t</div>)",
+			"\t})",
+			"}"
+		],
+		"description": "react for loop"
+	}, 
+
+	"react_html_param" :  {
+		"prefix": "react html param",
+		"scope": "javascript",
+		"body": [
+			"${1:param}={this.state.${1:param}}"
+		],
+		"description": "react html param"
+	},
+
+	"react_html_func" :  {
+		"prefix": "react html func",
+		"scope": "javascript",
+		"body": [
+			"${1:param}={this.${1:param}.bind(this)}"
+		],
+		"description": "react html func"
+	}
+}

@@ -1,0 +1,11 @@
+
+{
+  "ejs_test": {
+		"prefix": "ejs_test",
+		"scope": "html",
+		"body": [
+			"<h1>aaa</h1>",
+		],
+		"description": "test"
+	}
+}
